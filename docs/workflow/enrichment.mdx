@@ -1,0 +1,149 @@
+---
+title: Enrichment
+description: AI-enrich ontology entities with business intelligence
+icon: Sparkles
+---
+
+# Enrichment Phase
+
+The enrichment phase adds AI-generated insights to raw ontology entities, making them more useful for startup generation.
+
+```typescript
+import { enrichIndustry, enrichOccupation, enrichProcess } from 'startups.org.ai'
+
+// Enrich an industry
+const { enriched: enrichedIndustry } = await enrichIndustry({
+  industry: healthcareIndustry,
+  depth: 'comprehensive'
+})
+
+// Enrich an occupation
+const { enriched: enrichedOccupation, topProblems } = await enrichOccupation({
+  occupation: chiefFinancialOfficer,
+  industryContext: 'healthcare',
+  depth: 'comprehensive'
+})
+
+// Enrich a process
+const { enriched: enrichedProcess, automationOpportunities } = await enrichProcess({
+  process: accountsPayable,
+  industryContext: 'healthcare',
+  occupationContext: 'CFO',
+  includeDiagrams: true
+})
+```
+
+## Industry Enrichment
+
+```typescript
+const enrichedIndustry: EnrichedIndustry = {
+  // Base entity
+  ...industry,
+
+  // Business types in this industry
+  businessTypes: [
+    { name: 'Hospital System', description: '...' },
+    { name: 'Private Practice', description: '...' }
+  ],
+
+  // Business model canvas
+  businessModelCanvas: {
+    customerSegments: ['Patients', 'Insurance providers'],
+    valuePropositions: ['Quality care', 'Convenience'],
+    channels: ['Direct care', 'Telemedicine'],
+    // ...
+  },
+
+  // Competitive landscape
+  competitiveLandscape: {
+    marketSize: '$4.5 trillion',
+    growthRate: '5.4% CAGR',
+    keyPlayers: ['Kaiser', 'HCA Healthcare'],
+    disruptions: ['Telemedicine', 'AI diagnostics']
+  },
+
+  // AI opportunity
+  aiOpportunity: {
+    score: 85,
+    topUseCase: 'Administrative automation',
+    rationale: 'High documentation burden ideal for AI'
+  }
+}
+```
+
+## Occupation Enrichment
+
+```typescript
+const enrichedOccupation: EnrichedOccupation = {
+  ...occupation,
+
+  // Problem stacks (external → internal → philosophical)
+  problemStacks: [
+    {
+      external: 'Financial reports take too long',
+      internal: 'Anxiety about accuracy and compliance',
+      philosophical: 'Finance should enable strategy, not paperwork',
+      villainy: 'Manual processes waste strategic talent',
+      severity: 'high',
+      frequency: 'daily'
+    }
+  ],
+
+  // Typical workflows
+  workflows: [
+    {
+      name: 'Monthly Close',
+      steps: ['Gather data', 'Reconcile', 'Analyze', 'Report'],
+      frequency: 'monthly',
+      painLevel: 'high'
+    }
+  ],
+
+  // Buying triggers
+  buyingTriggers: [
+    'New CFO hire seeking quick wins',
+    'Board pressure for better reporting',
+    'Audit findings'
+  ]
+}
+```
+
+## Process Enrichment
+
+```typescript
+const enrichedProcess: EnrichedProcess = {
+  ...process,
+
+  // Performance characteristics
+  performance: {
+    cycleTime: '30 days average',
+    errorRate: '3% of transactions',
+    bottlenecks: ['Manual data entry', 'Approval routing'],
+    handoffPoints: 4
+  },
+
+  // Automation opportunities
+  automationPotential: {
+    fullyAutomatable: 40,
+    partiallyAutomatable: 35,
+    requiresHuman: 25,
+    recommendations: [
+      'Automate invoice data extraction',
+      'Auto-route based on amount/vendor'
+    ]
+  }
+}
+```
+
+## Enrichment Depth
+
+| Depth | Description | Time |
+|-------|-------------|------|
+| `basic` | Essential fields only | ~2 seconds |
+| `standard` | Most fields | ~5 seconds |
+| `comprehensive` | All fields with examples | ~10 seconds |
+
+## See Also
+
+- [Generation](/workflow/generation) — Use enriched data
+- [Ontology](/ontology) — Raw entity types

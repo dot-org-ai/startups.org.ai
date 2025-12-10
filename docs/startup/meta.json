@@ -1,0 +1,17 @@
+{
+  "title": "Startup",
+  "description": "Concrete startup concepts with branding and scoring",
+  "root": true,
+  "icon": "Rocket",
+  "pages": [
+    "index",
+    "---Identity---",
+    "branding",
+    "variants",
+    "---Evaluation---",
+    "viability",
+    "status",
+    "---Organization---",
+    "portfolio"
+  ]
+}

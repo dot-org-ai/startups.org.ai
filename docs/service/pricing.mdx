@@ -1,0 +1,163 @@
+---
+title: Service Pricing
+description: Pricing tiers, add-ons, and monetization strategies
+icon: DollarSign
+---
+
+# Service Pricing
+
+Structure pricing for productized services with tiers, add-ons, and value-based positioning.
+
+```typescript
+import { ServicePricing, PricingTier, AddOn } from 'startups.org.ai'
+
+const pricing: ServicePricing = {
+  tiers: [
+    {
+      name: 'Starter',
+      price: 299,
+      billingPeriod: 'monthly',
+      description: 'For small businesses getting started',
+      features: [
+        'Monthly financial reports',
+        'Basic dashboards',
+        'Email support'
+      ],
+      limits: { entities: 1, reports: 4 },
+      cta: 'Start Free Trial'
+    },
+    {
+      name: 'Pro',
+      price: 699,
+      billingPeriod: 'monthly',
+      description: 'For growing businesses',
+      features: [
+        'Weekly financial reports',
+        'Advanced dashboards',
+        'Variance analysis',
+        'Priority support'
+      ],
+      limits: { entities: 5, reports: 'Unlimited' },
+      popular: true,
+      cta: 'Start Free Trial'
+    },
+    {
+      name: 'Enterprise',
+      price: 1499,
+      billingPeriod: 'monthly',
+      description: 'For multi-entity organizations',
+      features: [
+        'Daily financial reports',
+        'Custom dashboards',
+        'Consolidation',
+        'Dedicated support',
+        'Custom integrations'
+      ],
+      limits: { entities: 'Unlimited', reports: 'Unlimited' },
+      cta: 'Contact Sales'
+    }
+  ],
+  addOns: [
+    {
+      name: 'Rush Delivery',
+      description: 'Get reports in 4 hours instead of 24',
+      price: 99,
+      billingPeriod: 'per-use'
+    },
+    {
+      name: 'Board Package',
+      description: 'Investor-ready presentation deck',
+      price: 199,
+      billingPeriod: 'per-use'
+    }
+  ],
+  customQuote: true,
+  freeTrialDays: 14,
+  moneyBackDays: 30
+}
+```
+
+## Pricing Tiers
+
+### Best Practices
+
+**3 tiers is optimal** — Good, Better, Best
+
+| Tier | Purpose | Typical Buyer |
+|------|---------|---------------|
+| Starter | Low barrier entry | Small business, testing |
+| Pro | Most value, most buyers | Growth stage |
+| Enterprise | Custom, high-touch | Large organizations |
+
+### Tier Structure
+
+```typescript
+const tier: PricingTier = {
+  name: 'Pro',
+  price: 699,
+  billingPeriod: 'monthly',
+  description: 'For growing businesses',
+  features: ['Feature 1', 'Feature 2', 'Feature 3'],
+  limits: { users: 10, reports: 100 },
+  popular: true,  // Highlight this tier
+  cta: 'Start Free Trial'
+}
+```
+
+## Billing Periods
+
+| Period | Use Case |
+|--------|----------|
+| `one-time` | Project-based services |
+| `monthly` | Recurring services |
+| `quarterly` | Seasonal services |
+| `annual` | Committed relationships |
+
+## Add-Ons
+
+Increase ARPU with optional extras:
+
+```typescript
+const addOns: AddOn[] = [
+  {
+    name: 'Rush Delivery',
+    description: 'Priority processing',
+    price: 99,
+    billingPeriod: 'per-use'
+  },
+  {
+    name: 'White Labeling',
+    description: 'Your brand on deliverables',
+    price: 199,
+    billingPeriod: 'monthly'
+  },
+  {
+    name: 'API Access',
+    description: 'Programmatic access',
+    price: 299,
+    billingPeriod: 'monthly'
+  }
+]
+```
+
+## Trust Signals
+
+Build confidence in pricing:
+
+| Element | Purpose |
+|---------|---------|
+| `freeTrialDays` | Risk-free testing |
+| `moneyBackDays` | Purchase confidence |
+| `customQuote` | Enterprise flexibility |
+
+## Pricing Psychology
+
+- **Anchor high** — Show enterprise tier first
+- **Highlight middle** — Mark as "Most Popular"
+- **Annual discount** — Incentivize commitment
+- **Price on value** — Not on cost
+
+## See Also
+
+- [Productized Services](/service/productized) — Service structure
+- [Patterns](/service/patterns) — Pattern-based pricing

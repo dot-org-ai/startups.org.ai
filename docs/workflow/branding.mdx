@@ -1,0 +1,122 @@
+---
+title: Branding
+description: Generate names, domains, and brand identity
+icon: Palette
+---
+
+# Branding Phase
+
+The branding phase assigns names, domains, and complete brand identities to scored concepts.
+
+```typescript
+import { generateName, generateBrand, allocateSubdomain } from 'startups.org.ai'
+
+// Generate name
+const { primary, alternatives, domainAvailability } = await generateName({
+  concept,
+  brandFamily: headlessLy,
+  style: 'compound',
+  alternatives: 5
+})
+
+// Generate full brand
+const { brand, assets } = await generateBrand({
+  concept,
+  name: primary,
+  brandFamily: headlessLy
+})
+
+// Allocate subdomain
+const { allocation } = await allocateSubdomain({
+  concept,
+  brandFamily: headlessLy,
+  preferredSubdomain: 'cfo'
+})
+```
+
+## Name Generation
+
+```typescript
+const { primary, alternatives } = await generateName({
+  concept,
+  style: 'compound'  // or 'abstract', 'metaphorical', 'descriptive'
+})
+
+const name: StartupName = {
+  name: 'Headless CFO',
+  tagline: 'Financial intelligence for AI agents',
+  domain: 'headlesscfo.com',
+  alternativeDomains: ['headless.cfo', 'hcfo.ai'],
+  naming: {
+    pattern: 'compound',
+    pronunciation: 'HED-les SEE-ef-oh',
+    memorability: 'high',
+    spellability: 'easy'
+  }
+}
+```
+
+## Brand Identity
+
+```typescript
+const { brand } = await generateBrand({ concept, name })
+
+const brand: BrandIdentity = {
+  name: primaryName,
+  tone: 'technical',
+  visual: {
+    primaryColor: '#2563EB',
+    secondaryColor: '#1E40AF',
+    iconStyle: 'geometric',
+    typography: 'mono'
+  },
+  voice: {
+    personality: ['precise', 'reliable', 'efficient'],
+    doSay: ['automate', 'integrate', 'API'],
+    dontSay: ['easy', 'simple', 'magic']
+  }
+}
+```
+
+## Brand Family Integration
+
+Use brand families for consistent subdomain strategy:
+
+```typescript
+const { allocation } = await allocateSubdomain({
+  concept,
+  brandFamily: {
+    rootDomain: 'headless.ly',
+    subdomainPattern: 'occupation'
+  },
+  preferredSubdomain: 'cfo'
+})
+
+// allocation: { subdomain: 'cfo', fullDomain: 'cfo.headless.ly', ... }
+```
+
+## Asset Generation
+
+```typescript
+const { assets } = await generateBrand({ concept, name })
+
+assets: {
+  logoPrompt: 'Minimalist geometric logo with financial graph motif...',
+  colorPalette: ['#2563EB', '#1E40AF', '#DBEAFE', '#1E3A8A'],
+  fontPairings: ['Inter + JetBrains Mono', 'DM Sans + Fira Code']
+}
+```
+
+## Naming Styles
+
+| Style | Description | Example |
+|-------|-------------|---------|
+| `descriptive` | Describes function | Salesforce, Mailchimp |
+| `compound` | Two words combined | Facebook, YouTube |
+| `abstract` | Made-up word | Kodak, Xerox |
+| `metaphorical` | Metaphor | Amazon, Uber |
+
+## See Also
+
+- [Branding](/startup/branding) — Full branding system
+- [Productization](/workflow/productization) — Package branded concepts

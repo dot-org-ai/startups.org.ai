@@ -1,0 +1,63 @@
+---
+title: Pricing
+description: Revenue models for startup concepts
+icon: DollarSign
+---
+
+# Pricing
+
+Define how generated startups will monetize. Pricing model affects everything from customer acquisition to unit economics.
+
+```typescript
+import { PricingStrategy, PricingModel } from 'startups.org.ai'
+
+const pricing: PricingStrategy = {
+  model: 'usage',
+  freeTrialDays: 14,
+  freeTier: true,
+  startingPrice: 29,
+  enterpriseCustom: true
+}
+```
+
+## Pricing Models
+
+| Model | Description | Best For |
+|-------|-------------|----------|
+| `usage` | Pay per API call, token, transaction | APIs, AI services |
+| `seat` | Pay per user/seat | Team collaboration tools |
+| `flat` | Flat monthly/annual fee | Simple products |
+| `tiered` | Tiers based on features/limits | Multi-segment targeting |
+| `freemium` | Free tier + paid upgrades | PLG strategies |
+| `outcome` | Pay for results/outcomes | High-value deliverables |
+| `credits` | Pre-purchased credits | Flexible consumption |
+| `marketplace` | Take rate on transactions | Two-sided platforms |
+| `hybrid` | Combination of models | Complex products |
+
+## Model Selection by Segment
+
+| Segment | Recommended Models |
+|---------|-------------------|
+| Enterprise | `seat`, `tiered`, `outcome`, `hybrid` |
+| Mid-Market | `tiered`, `seat`, `flat` |
+| SMB | `flat`, `tiered`, `freemium` |
+| Startup | `freemium`, `usage`, `credits` |
+| Solopreneur | `freemium`, `flat`, `usage` |
+| Consumer | `freemium`, `flat` |
+
+## Configuration Options
+
+```typescript
+const pricing: PricingStrategy = {
+  model: 'tiered',
+  freeTrialDays: 14,         // 0 = no trial
+  freeTier: true,             // PLG essential
+  startingPrice: 29,          // Lowest paid tier (USD/month)
+  enterpriseCustom: true      // "Contact us" for enterprise
+}
+```
+
+## See Also
+
+- [Customer Segments](/hypothesis/segments) — Align pricing to segments
+- [Value Propositions](/hypothesis/value-props) — Price reflects value

@@ -1,0 +1,115 @@
+---
+title: Viability
+description: Score and rank startup concepts
+icon: BarChart3
+---
+
+# Viability Scoring
+
+Every startup concept receives a viability score across multiple dimensions. Scores determine which concepts get experimented with.
+
+```typescript
+import { ViabilityScore, ViabilityDimension } from 'startups.org.ai'
+
+const viability: ViabilityScore = {
+  overall: 78,
+
+  dimensions: {
+    marketSize: {
+      dimension: 'Market Size',
+      score: 85,
+      weight: 0.15,
+      rationale: 'Healthcare CFO market is $2B+ TAM',
+      signals: ['Market research reports', 'Competitor funding']
+    },
+    problemSeverity: {
+      dimension: 'Problem Severity',
+      score: 90,
+      weight: 0.20,
+      rationale: 'CFOs cite financial reporting as top pain point',
+      signals: ['Survey data', 'Interview quotes']
+    },
+    solutionFit: {
+      dimension: 'Solution Fit',
+      score: 75,
+      weight: 0.20,
+      rationale: 'LLMs excel at structured financial analysis',
+      signals: ['Benchmark results', 'Pilot feedback']
+    },
+    competition: {
+      dimension: 'Competition',
+      score: 60,
+      weight: 0.10,
+      rationale: 'Several incumbents, but none AI-native',
+      signals: ['Competitor analysis', 'G2 reviews']
+    },
+    gtmEase: {
+      dimension: 'GTM Ease',
+      score: 70,
+      weight: 0.15,
+      rationale: 'Clear buyer persona, LinkedIn targetable',
+      signals: ['Outreach response rates', 'Event attendance']
+    },
+    monetization: {
+      dimension: 'Monetization',
+      score: 80,
+      weight: 0.10,
+      rationale: 'High willingness to pay for financial tools',
+      signals: ['Competitor pricing', 'Survey data']
+    },
+    defensibility: {
+      dimension: 'Defensibility',
+      score: 65,
+      weight: 0.05,
+      rationale: 'Data moat from historical financials',
+      signals: ['Switching costs', 'Integration depth']
+    },
+    timing: {
+      dimension: 'Timing',
+      score: 95,
+      weight: 0.05,
+      rationale: 'AI adoption in finance accelerating rapidly',
+      signals: ['Google Trends', 'Hiring data']
+    }
+  },
+
+  tier: 'A',
+  recommendation: 'test-hypothesis'
+}
+```
+
+## Scoring Dimensions
+
+| Dimension | Weight | Description |
+|-----------|--------|-------------|
+| `marketSize` | 15% | TAM/SAM potential |
+| `problemSeverity` | 20% | How painful is the problem? |
+| `solutionFit` | 20% | How well does AI solve it? |
+| `competition` | 10% | Competitive landscape (higher = less competition) |
+| `gtmEase` | 15% | Ease of reaching customers |
+| `monetization` | 10% | Ability to monetize |
+| `defensibility` | 5% | Moat potential |
+| `timing` | 5% | Market timing |
+
+## Tiers and Recommendations
+
+| Tier | Score Range | Description |
+|------|-------------|-------------|
+| S | 90-100 | Exceptional opportunity |
+| A | 80-89 | Strong opportunity |
+| B | 70-79 | Good opportunity |
+| C | 60-69 | Moderate opportunity |
+| D | <60 | Weak opportunity |
+
+| Recommendation | Description |
+|----------------|-------------|
+| `pursue-aggressively` | Drop everything, build this |
+| `test-hypothesis` | Run experiments to validate |
+| `explore-further` | Needs more research |
+| `deprioritize` | Put on backburner |
+| `skip` | Don't pursue |
+
+## See Also
+
+- [Status](/startup/status) — Lifecycle management
+- [Experiment](/experiment) — Validate scores

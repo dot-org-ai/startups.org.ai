@@ -1,0 +1,59 @@
+---
+title: Business Model
+description: Configure the fundamental business model for generated startups
+icon: Building2
+---
+
+# Business Model
+
+The business model defines how startups from this hypothesis create and capture value.
+
+```typescript
+import { BusinessModel, BusinessModelType } from 'startups.org.ai'
+
+const model: BusinessModel = {
+  type: 'api',
+  targetCustomer: 'agent',
+  segments: ['startup', 'mid-market', 'enterprise'],
+  delivery: 'api',
+  pricing: {
+    model: 'usage',
+    freeTier: true,
+    startingPrice: 29,
+    enterpriseCustom: true
+  },
+  valueProps: [
+    { primary: 'automation', statement: '10x faster than manual processes' }
+  ],
+  moat: 'Proprietary training data from serving millions of API calls'
+}
+```
+
+## Business Model Types
+
+| Type | Description | Best For |
+|------|-------------|----------|
+| `saas` | Software-as-a-Service with UI | Human users, recurring revenue |
+| `api` | API-as-a-Service | AI agents, developers |
+| `paas` | Platform-as-a-Service | Builders, developers |
+| `marketplace` | Two-sided marketplace | Matching supply and demand |
+| `productized` | Productized service | Fixed-scope deliverables |
+| `agency` | Service delivery agency | Custom work at scale |
+| `data` | Data-as-a-Service | Insights and intelligence |
+| `infrastructure` | Infrastructure provider | Foundation layers |
+
+## Target Customer
+
+```typescript
+type TargetCustomerType = 'agent' | 'human' | 'hybrid'
+```
+
+- **agent** — AI agents consume the service via API. No UI needed.
+- **human** — Traditional human users with full UI/UX.
+- **hybrid** — Both agents and humans. API + UI.
+
+## See Also
+
+- [Customer Segments](/hypothesis/segments) — Enterprise, SMB, and startup targeting
+- [Value Propositions](/hypothesis/value-props) — Differentiation angles
+- [Pricing](/hypothesis/pricing) — Revenue models

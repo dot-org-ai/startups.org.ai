@@ -1,0 +1,70 @@
+---
+title: Variants
+description: Create positioning and segment variations of concepts
+icon: GitFork
+---
+
+# Variants
+
+Variants allow you to test different angles on the same core concept—different branding, pricing, positioning, or target segments.
+
+```typescript
+import { StartupVariant, VariantType } from 'startups.org.ai'
+
+const variant: StartupVariant = {
+  id: 'cfo-ai-healthcare-premium',
+  parentConceptId: 'cfo-ai-healthcare',
+  variantType: 'pricing',
+  description: 'Premium enterprise positioning with outcome-based pricing',
+
+  pricingOverride: {
+    model: 'outcome',
+    freeTier: false,
+    startingPrice: 2500,
+    enterpriseCustom: true
+  },
+
+  valuePropsOverride: [
+    {
+      primary: 'quality',
+      statement: 'Board-ready financial intelligence',
+      quantified: 'Used by 50+ hospital systems'
+    }
+  ]
+}
+```
+
+## Variant Types
+
+| Type | Description | What Changes |
+|------|-------------|--------------|
+| `branding` | Different brand/name | Name, domain, tone |
+| `pricing` | Different pricing model | Pricing strategy |
+| `positioning` | Different value prop angle | Value propositions |
+| `geography` | Different target geography | Market, language |
+| `language` | Different language | Content, voice |
+| `segment` | Different customer segment | Segments, pricing |
+| `feature` | Different feature focus | Core offering |
+
+## When to Create Variants
+
+- **A/B test messaging** — Same product, different positioning
+- **Market expansion** — Same product, different geography
+- **Segment expansion** — Same product, different buyer
+- **Pricing experiments** — Same product, different price points
+- **Brand experiments** — Same product, different branding
+
+## Variant Strategy
+
+```typescript
+const generationConfig = {
+  includeVariants: true,
+  variantsPerConcept: 3,
+  variantTypes: ['pricing', 'positioning', 'segment']
+}
+```
+
+## See Also
+
+- [Branding](/startup/branding) — Brand identity system
+- [Experiment](/experiment) — Test variants

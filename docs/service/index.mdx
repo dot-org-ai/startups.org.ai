@@ -1,0 +1,81 @@
+---
+title: Service
+description: AI-delivered productized services and overlay capabilities
+icon: Briefcase
+---
+
+# Service
+
+Services are how startup concepts deliver value—productized offerings with fixed scope, pricing, and timelines, often enhanced with AI overlay capabilities.
+
+```typescript
+import { ProductizedService, AIOverlayService } from 'startups.org.ai'
+
+const service: ProductizedService = {
+  id: 'financial-reporting-automation',
+  name: 'Financial Reporting Automation',
+  slug: 'financial-reporting',
+
+  positioning: {
+    category: 'financial-analysis',
+    tagline: 'Board-ready reports in minutes, not weeks',
+    headline: 'AI-Powered Financial Reporting',
+    problem: 'CFOs spend 60% of time on manual report preparation',
+    solution: 'AI generates comprehensive financial reports automatically',
+    transformation: 'From overwhelmed number-cruncher to strategic advisor'
+  },
+
+  timeline: {
+    turnaround: '24 hours',
+    rushAvailable: true,
+    sla: '99.9% on-time delivery'
+  },
+
+  pricing: {
+    tiers: [
+      { name: 'Starter', price: 299, billingPeriod: 'monthly' },
+      { name: 'Pro', price: 699, billingPeriod: 'monthly', popular: true },
+      { name: 'Enterprise', price: 1499, billingPeriod: 'monthly' }
+    ],
+    customQuote: true
+  }
+}
+```
+
+<Cards columns={2}>
+  <Card icon={<Package />} title="Productized Services" href="/service/productized">
+    Fixed-scope, fixed-price service packaging
+  </Card>
+  <Card icon={<Layers />} title="AI Overlays" href="/service/overlays">
+    Coaching, training, and analysis capabilities
+  </Card>
+  <Card icon={<LayoutTemplate />} title="Patterns" href="/service/patterns">
+    Common service delivery patterns
+  </Card>
+  <Card icon={<DollarSign />} title="Pricing" href="/service/pricing">
+    Tiers, add-ons, and monetization
+  </Card>
+</Cards>
+
+## Productized Service Principles
+
+1. **Fixed Scope** — Clear boundaries on what's included
+2. **Fixed Price** — No hourly billing, predictable cost
+3. **Fixed Timeline** — Clear delivery expectations
+4. **Repeatable Process** — Standardized delivery
+5. **Clear Outcome** — Tangible deliverable
+
+## Service Types
+
+| Type | Description | Example |
+|------|-------------|---------|
+| `full-automation` | AI does the entire task | Report generation |
+| `augmentation` | AI assists human | Writing assistance |
+| `overlay` | AI coaches/analyzes/reviews | Performance coaching |
+| `platform` | AI-powered platform | Analytics dashboard |
+| `api` | API for other systems | Data enrichment API |
+
+## See Also
+
+- [Productized Services](/service/productized) — Service packaging
+- [AI Overlays](/service/overlays) — Enhancement capabilities

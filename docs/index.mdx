@@ -1,0 +1,64 @@
+---
+title: Startups.org.ai
+description: AI-powered startup generation and experimentation at scale
+---
+
+# Generate, Validate, and Scale Startup Concepts
+
+Startups.org.ai provides the schemas and abstractions for generating millions of startup concepts by crossing hypotheses with ontology dimensions, then validating them through systematic experimentation.
+
+<Cards columns={3}>
+  <Card icon={<Lightbulb />} title="Hypothesis" href="/hypothesis">
+    Meta-strategies that define classes of startups
+  </Card>
+  <Card icon={<Rocket />} title="Startup" href="/startup">
+    Concrete startup concepts with branding and scoring
+  </Card>
+  <Card icon={<FlaskConical />} title="Experiment" href="/experiment">
+    Validation through channels and metrics
+  </Card>
+  <Card icon={<Boxes />} title="Ontology" href="/ontology">
+    Industries, occupations, tasks, and processes
+  </Card>
+  <Card icon={<Briefcase />} title="Service" href="/service">
+    AI-delivered productized services
+  </Card>
+  <Card icon={<GitBranch />} title="Workflow" href="/workflow">
+    Execution pipelines and automation
+  </Card>
+</Cards>
+
+## The Startup Factory
+
+Traditional startup creation is artisanal—one idea, one team, one bet. Startups.org.ai industrializes the process:
+
+- **Hypothesis-Driven** — Define meta-strategies like "Headless SaaS for Agents" or "Vertical AI by Occupation" that generate thousands of concrete concepts.
+- **Ontology-Powered** — Cross-product hypotheses with occupations, industries, processes, and tasks from O*NET, NAICS, and APQC taxonomies.
+- **Experiment Everything** — Validate demand through SEO, social, outbound, and paid channels before building.
+- **Score and Rank** — AI-powered viability scoring across market size, problem severity, solution fit, and more.
+
+## Get Started
+
+```typescript
+import { Hypothesis, StartupConcept, Experiment } from 'startups.org.ai'
+
+// Define a hypothesis
+const hypothesis: Hypothesis = {
+  id: 'vertical-ai-cfo',
+  name: 'Vertical AI CFOs',
+  thesis: 'Every occupation needs an AI copilot for financial decisions',
+  // ...
+}
+
+// Generate concepts
+const concepts: StartupConcept[] = generateFromHypothesis(hypothesis, ontology)
+
+// Run experiments
+const experiment: Experiment = {
+  type: 'demand-validation',
+  channel: 'landing-page',
+  // ...
+}
+```
+
+Start with [Hypothesis](/hypothesis)—the foundation of the startup factory.

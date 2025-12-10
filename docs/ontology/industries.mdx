@@ -1,0 +1,94 @@
+---
+title: Industries
+description: Industry classifications from NAICS taxonomy
+icon: Building2
+---
+
+# Industries
+
+Industries represent business sectors from the North American Industry Classification System (NAICS).
+
+```typescript
+import { Industry, IndustryVertical } from 'startups.org.ai'
+
+const industry: Industry = {
+  ns: 'industries.org.ai',
+  type: 'Industry',
+  id: 'HospitalsGeneral',
+  name: 'General Medical and Surgical Hospitals',
+  description: 'Establishments known and licensed as general medical and surgical hospitals primarily engaged in providing diagnostic and medical treatment...',
+  code: '622110',
+  shortName: 'Hospitals',
+  sourceType: 'NAICS',
+  level: 5
+}
+```
+
+## NAICS Hierarchy
+
+| Level | Digits | Description |
+|-------|--------|-------------|
+| 1 | 2 | Sector (e.g., 62 - Health Care) |
+| 2 | 3 | Subsector (e.g., 622 - Hospitals) |
+| 3 | 4 | Industry Group (e.g., 6221 - General Hospitals) |
+| 4 | 5 | NAICS Industry (e.g., 62211 - General Medical) |
+| 5 | 6 | National Industry (e.g., 622110 - General Med/Surg) |
+
+## Industry Verticals
+
+High-level verticals for targeting:
+
+```typescript
+type IndustryVertical =
+  | 'healthcare'
+  | 'finance'
+  | 'legal'
+  | 'real-estate'
+  | 'manufacturing'
+  | 'retail'
+  | 'hospitality'
+  | 'construction'
+  | 'transportation'
+  | 'education'
+  | 'government'
+  | 'technology'
+  | 'media'
+  | 'agriculture'
+  | 'energy'
+  | 'professional-services'
+```
+
+## High-Value Industries
+
+| Industry | Code | Vertical |
+|----------|------|----------|
+| Hospitals | 622 | healthcare |
+| Commercial Banking | 522110 | finance |
+| Legal Services | 5411 | legal |
+| Real Estate Agents | 531210 | real-estate |
+| Software Publishers | 511210 | technology |
+| Accounting Services | 541211 | professional-services |
+
+## Filtering Industries
+
+```typescript
+const config: OntologyDimensionConfig = {
+  enabled: true,
+  priority: 6,
+  filter: {
+    // Filter by specific IDs
+    ids: ['Healthcare', 'Finance', 'Legal'],
+    // Or by hierarchy level
+    levels: [1, 2, 3],  // Sector through industry group
+    // Or by name
+    namePattern: 'Health|Hospital|Medical',
+    // Limit results
+    limit: 100
+  }
+}
+```
+
+## See Also
+
+- [Occupations](/ontology/occupations) — Jobs in these industries
+- [Processes](/ontology/processes) — Industry processes

@@ -1,0 +1,186 @@
+---
+title: Service Patterns
+description: Common patterns for structuring productized services
+icon: LayoutTemplate
+---
+
+# Service Patterns
+
+Patterns provide proven structures for different types of productized services.
+
+```typescript
+import { ServicePattern, ServiceTemplate } from 'startups.org.ai'
+
+type Pattern =
+  // Audit/Analysis
+  | 'audit'           // Review and assess
+  | 'analysis'        // Analyze and report
+  | 'assessment'      // Evaluate and score
+
+  // Creation
+  | 'done-for-you'    // We create it
+  | 'done-with-you'   // Collaborative
+  | 'template-plus'   // Template + customization
+
+  // Optimization
+  | 'optimization'    // Improve existing
+  | 'transformation'  // Major overhaul
+  | 'migration'       // Move A to B
+
+  // Ongoing
+  | 'managed'         // Ongoing management
+  | 'monitoring'      // Ongoing monitoring
+  | 'maintenance'     // Ongoing maintenance
+
+  // Training
+  | 'workshop'        // Interactive training
+  | 'course'          // Self-paced learning
+  | 'coaching'        // 1:1 guidance
+```
+
+## Audit/Analysis Patterns
+
+### Audit
+
+Review and assess current state:
+
+| Aspect | Typical Value |
+|--------|---------------|
+| Timeline | 1-2 weeks |
+| Pricing | $500-$5,000 |
+| Deliverable | Audit report with findings |
+| Examples | SEO Audit, Security Audit, Financial Audit |
+
+### Analysis
+
+Deep analysis and recommendations:
+
+| Aspect | Typical Value |
+|--------|---------------|
+| Timeline | 2-4 weeks |
+| Pricing | $1,000-$10,000 |
+| Deliverable | Analysis report with recommendations |
+| Examples | Competitive Analysis, Market Analysis |
+
+## Creation Patterns
+
+### Done-for-You
+
+Full service delivery:
+
+| Aspect | Typical Value |
+|--------|---------------|
+| Timeline | 1-4 weeks |
+| Pricing | $1,000-$25,000 |
+| Deliverable | Completed work product |
+| Examples | Content Creation, Website Design |
+
+### Done-with-You
+
+Collaborative creation:
+
+| Aspect | Typical Value |
+|--------|---------------|
+| Timeline | 2-8 weeks |
+| Pricing | $2,000-$15,000 |
+| Deliverable | Co-created output |
+| Examples | Strategy Session, Roadmap Planning |
+
+## Optimization Patterns
+
+### Optimization
+
+Improve existing assets:
+
+| Aspect | Typical Value |
+|--------|---------------|
+| Timeline | 1-2 weeks |
+| Pricing | $500-$5,000 |
+| Deliverable | Optimized version |
+| Examples | Landing Page Optimization, Process Optimization |
+
+### Transformation
+
+Major overhaul:
+
+| Aspect | Typical Value |
+|--------|---------------|
+| Timeline | 4-12 weeks |
+| Pricing | $5,000-$50,000 |
+| Deliverable | Transformed system |
+| Examples | Website Redesign, Operations Overhaul |
+
+## Ongoing Patterns
+
+### Managed
+
+Continuous management:
+
+| Aspect | Typical Value |
+|--------|---------------|
+| Timeline | Monthly |
+| Pricing | $500-$5,000/month |
+| Deliverable | Ongoing service delivery |
+| Examples | Managed Ads, Managed Social Media |
+
+### Monitoring
+
+Continuous observation:
+
+| Aspect | Typical Value |
+|--------|---------------|
+| Timeline | Monthly |
+| Pricing | $100-$1,000/month |
+| Deliverable | Alerts and reports |
+| Examples | Uptime Monitoring, Compliance Monitoring |
+
+## Training Patterns
+
+### Workshop
+
+Interactive group training:
+
+| Aspect | Typical Value |
+|--------|---------------|
+| Timeline | Half-day to 2 days |
+| Pricing | $500-$5,000/person |
+| Deliverable | Training materials + certificate |
+| Examples | AI Workshop, Leadership Workshop |
+
+### Coaching
+
+1:1 ongoing guidance:
+
+| Aspect | Typical Value |
+|--------|---------------|
+| Timeline | Ongoing |
+| Pricing | $200-$1,000/hour |
+| Deliverable | Personalized guidance |
+| Examples | Executive Coaching, Career Coaching |
+
+## Using Patterns
+
+```typescript
+const template: ServiceTemplate = {
+  pattern: 'audit',
+  nameFormula: '{Industry} {Domain} Audit',
+  typicalPricing: { low: 500, mid: 2000, high: 5000 },
+  typicalTimeline: '1-2 weeks',
+  typicalDeliverables: [
+    'Current state assessment',
+    'Gap analysis',
+    'Recommendations report',
+    'Priority roadmap'
+  ],
+  keyDifferentiators: [
+    'AI-powered analysis',
+    'Industry benchmarking',
+    'Actionable recommendations'
+  ]
+}
+```
+
+## See Also
+
+- [Productized Services](/service/productized) — Full service structure
+- [Pricing](/service/pricing) — Pricing strategies

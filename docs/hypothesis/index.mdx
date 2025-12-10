@@ -1,0 +1,65 @@
+---
+title: Hypothesis
+description: Meta-strategies that define classes of startups
+icon: Lightbulb
+---
+
+# Hypothesis
+
+A Hypothesis is a meta-strategy that defines a class of startups. Rather than betting on a single idea, you define a pattern that generates thousands of concrete concepts when crossed with ontology dimensions.
+
+```typescript
+import { Hypothesis } from 'startups.org.ai'
+
+const hypothesis: Hypothesis = {
+  id: 'headless-saas',
+  name: 'Headless SaaS for Agents NOT Humans',
+  thesis: 'AI agents need APIs, not UIs. Build SaaS that agents consume directly.',
+  businessModel: {
+    type: 'api',
+    targetCustomer: 'agent',
+    segments: ['startup', 'enterprise'],
+    // ...
+  },
+  dimensions: {
+    occupations: { enabled: true, priority: 8 },
+    industries: { enabled: true, priority: 6 },
+    processes: { enabled: true, priority: 9 },
+    // ...
+  }
+}
+```
+
+<Cards columns={2}>
+  <Card icon={<Target />} title="Business Model" href="/hypothesis/business-model">
+    SaaS, API, marketplace, and service models
+  </Card>
+  <Card icon={<Users />} title="Customer Segments" href="/hypothesis/segments">
+    Enterprise, SMB, startup, and agent targeting
+  </Card>
+  <Card icon={<Gem />} title="Value Propositions" href="/hypothesis/value-props">
+    Speed, cost, quality, and automation angles
+  </Card>
+  <Card icon={<DollarSign />} title="Pricing" href="/hypothesis/pricing">
+    Usage, seat, outcome, and hybrid models
+  </Card>
+</Cards>
+
+## Examples
+
+| Hypothesis | Thesis | Target |
+|------------|--------|--------|
+| Headless SaaS | APIs for agents, not UIs for humans | AI Agents |
+| Vertical AI Agents | Every occupation needs an AI copilot | Knowledge Workers |
+| On-Demand Services | Human-quality work delivered by AI | SMBs |
+| Industry Workflows | Automate industry-specific processes | Enterprises |
+
+## How It Works
+
+1. **Define the thesis** — What fundamental belief does this hypothesis test?
+2. **Configure dimensions** — Which ontology dimensions matter most?
+3. **Set constraints** — Minimum viability scores, max concepts, required dimensions
+4. **Generate concepts** — Cross-product produces thousands of startup ideas
+5. **Score and rank** — AI evaluates market size, problem severity, solution fit
+
+See [Business Model](/hypothesis/business-model) to configure your hypothesis.

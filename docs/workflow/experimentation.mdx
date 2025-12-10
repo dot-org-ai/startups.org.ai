@@ -1,0 +1,118 @@
+---
+title: Experimentation
+description: Validate concepts through structured experiments
+icon: FlaskConical
+---
+
+# Experimentation Phase
+
+The experimentation phase validates deployed concepts through structured experiments across channels.
+
+```typescript
+import { designExperiment, runExperimentBatch } from 'startups.org.ai'
+
+// Design single experiment
+const { experiment, requiredAssets, estimatedDuration } = await designExperiment({
+  concept,
+  template: landingPageValidationTemplate,
+  channel: 'landing-page',
+  budget: 500
+})
+
+// Run batch of experiments
+const { batch, experiments } = await runExperimentBatch({
+  concepts: topConcepts,
+  experimentType: 'demand-validation',
+  totalBudget: 5000,
+  strategy: 'parallel'
+})
+```
+
+## Experiment Design
+
+```typescript
+const { experiment } = await designExperiment({
+  concept,
+  template: demandValidationTemplate,
+  budget: 500
+})
+
+experiment: {
+  id: 'exp-cfo-healthcare-001',
+  name: 'Healthcare CFO Demand Validation',
+  type: 'demand-validation',
+  channel: 'landing-page',
+  channelCategory: 'direct',
+
+  hypothesis: {
+    statement: 'If we launch a landing page...',
+    assumption: 'Healthcare CFOs need AI financial tools',
+    successCriteria: [
+      { metric: 'conversion-rate', operator: '>=', target: 2 }
+    ]
+  },
+
+  design: {
+    type: 'ab-test',
+    variants: [
+      { id: 'control', name: 'Professional', allocation: 50 },
+      { id: 'variant-a', name: 'Technical', allocation: 50 }
+    ],
+    duration: '2 weeks'
+  },
+
+  status: 'planned'
+}
+```
+
+## Batch Experiments
+
+Run experiments across multiple concepts:
+
+```typescript
+const { batch, experiments } = await runExperimentBatch({
+  concepts: top10Concepts,
+  experimentType: 'demand-validation',
+  totalBudget: 10000,
+  strategy: 'parallel'  // or 'sequential', 'staged'
+})
+
+// batch.budgetAllocation: { 'concept-1': 1000, 'concept-2': 1000, ... }
+// experiments: array of 10 experiments
+```
+
+## Execution Strategies
+
+| Strategy | Description | Use When |
+|----------|-------------|----------|
+| `parallel` | All experiments at once | Testing many concepts |
+| `sequential` | One after another | Limited budget/resources |
+| `staged` | Advance winners to next round | Tournament-style validation |
+
+## Experiment Lifecycle
+
+```
+planned → setup → running → paused → completed → analyzing → concluded
+```
+
+```typescript
+// Start experiment
+experiment.status = 'running'
+experiment.timeline.actualStart = new Date().toISOString()
+
+// Collect metrics
+experiment.results.metrics.push(
+  { type: 'visits', value: 500 },
+  { type: 'waitlist-signups', value: 15 },
+  { type: 'conversion-rate', value: 3.0 }
+)
+
+// Complete experiment
+experiment.status = 'completed'
+experiment.timeline.actualEnd = new Date().toISOString()
+```
+
+## See Also
+
+- [Experiment](/experiment) — Full experiment documentation
+- [Analysis](/workflow/analysis) — Analyze experiment results

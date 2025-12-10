@@ -1,0 +1,96 @@
+---
+title: Channels
+description: Experiment channels for validating startup concepts
+icon: Radio
+---
+
+# Channels
+
+Channels are where you run experiments to reach potential customers and validate demand.
+
+```typescript
+import { ExperimentChannel, ExperimentChannelCategory } from 'startups.org.ai'
+
+type ChannelCategory =
+  | 'organic'     // SEO, content, YouTube
+  | 'social'      // Twitter, LinkedIn, Reddit
+  | 'outbound'    // Email, LinkedIn outreach
+  | 'paid'        // Ads on various platforms
+  | 'community'   // Partnerships, affiliates
+  | 'direct'      // Landing pages, waitlists
+```
+
+## Organic Channels
+
+| Channel | Description | Best For |
+|---------|-------------|----------|
+| `seo` | Search engine optimization | Long-term traffic |
+| `aeo` | Answer engine optimization (AI search) | AI-native discovery |
+| `content-marketing` | Blog posts, guides | Authority building |
+| `youtube` | Video content | Demos, tutorials |
+| `podcast` | Audio content | Thought leadership |
+
+## Social Channels
+
+| Channel | Description | Best For |
+|---------|-------------|----------|
+| `twitter` | X/Twitter | Developer, startup audience |
+| `linkedin` | LinkedIn | B2B, enterprise |
+| `reddit` | Reddit communities | Niche validation |
+| `hacker-news` | Hacker News | Technical products |
+| `product-hunt` | Product Hunt | Launch visibility |
+| `indie-hackers` | Indie Hackers | Solo founders |
+
+## Outbound Channels
+
+| Channel | Description | Best For |
+|---------|-------------|----------|
+| `cold-email` | Email outreach | Direct validation |
+| `linkedin-outreach` | LinkedIn DMs | B2B prospects |
+| `cold-calling` | Phone calls | High-value targets |
+
+## Paid Channels
+
+| Channel | Description | Best For |
+|---------|-------------|----------|
+| `google-ads` | Google Ads | Intent-based |
+| `meta-ads` | Facebook/Instagram | B2C, SMB |
+| `linkedin-ads` | LinkedIn Ads | B2B targeting |
+| `twitter-ads` | X/Twitter Ads | Tech audience |
+| `reddit-ads` | Reddit Ads | Community targeting |
+
+## Community Channels
+
+| Channel | Description | Best For |
+|---------|-------------|----------|
+| `community-building` | Build community | Long-term engagement |
+| `partnerships` | Strategic partners | Distribution |
+| `affiliate` | Affiliate programs | Performance marketing |
+| `referral` | Referral programs | Viral growth |
+
+## Direct Channels
+
+| Channel | Description | Best For |
+|---------|-------------|----------|
+| `waitlist` | Email waitlist | Demand signal |
+| `landing-page` | Dedicated landing page | Conversion testing |
+| `demo-requests` | Demo request forms | High-intent leads |
+
+## Channel Selection
+
+Match channels to your experiment type:
+
+```typescript
+const channelByType = {
+  'demand-validation': ['landing-page', 'waitlist', 'cold-email'],
+  'message-testing': ['linkedin', 'twitter', 'google-ads'],
+  'channel-testing': ['seo', 'linkedin-ads', 'cold-email'],
+  'price-testing': ['landing-page'],
+  'audience-testing': ['linkedin-ads', 'google-ads']
+}
+```
+
+## See Also
+
+- [Types](/experiment/types) — Experiment types
+- [Metrics](/experiment/metrics) — Channel metrics

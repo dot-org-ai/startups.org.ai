@@ -1,0 +1,110 @@
+---
+title: Deployment
+description: Generate assets and deploy concepts
+icon: Rocket
+---
+
+# Deployment Phase
+
+The deployment phase generates content assets and deploys them to the concept's subdomain.
+
+```typescript
+import { generateAssets, deployConcept } from 'startups.org.ai'
+
+// Generate assets
+const { assets } = await generateAssets({
+  concept,
+  assetTypes: ['landing-page', 'blog-posts', 'email-sequence', 'social-posts'],
+  count: {
+    'blog-posts': 5,
+    'social-posts': 20,
+    'email-sequence': 1
+  }
+})
+
+// Deploy to subdomain
+const { url, status } = await deployConcept({
+  concept,
+  subdomain: allocation,
+  assets
+})
+```
+
+## Asset Generation
+
+```typescript
+const { assets, summary } = await generateAssets({
+  concept,
+  assetTypes: [
+    'landing-page',    // Main landing page
+    'blog-posts',      // SEO content
+    'email-sequence',  // Nurture sequence
+    'social-posts',    // Social media content
+    'ad-creative',     // Ad copy and images
+    'lead-magnet'      // Downloadable resource
+  ],
+  count: {
+    'blog-posts': 10,
+    'social-posts': 30,
+    'ad-creative': 5
+  }
+})
+
+// summary: { total: 47, byType: { 'landing-page': 1, 'blog-posts': 10, ... } }
+```
+
+## Asset Types
+
+| Type | Description | Typical Count |
+|------|-------------|---------------|
+| `landing-page` | Main conversion page | 1 |
+| `blog-posts` | SEO/content marketing | 5-20 |
+| `email-sequence` | Nurture emails | 1 sequence (5-7 emails) |
+| `social-posts` | Social media content | 20-50 |
+| `ad-creative` | Ad copy and visuals | 5-10 |
+| `lead-magnet` | Downloadable resource | 1-3 |
+
+## Asset Structure
+
+```typescript
+const asset: ContentAsset = {
+  id: 'lp-healthcare-cfo-v1',
+  type: 'landing-page',
+  title: 'Healthcare Financial Audit Landing Page',
+  url: 'https://cfo.headless.ly',
+  status: 'draft',
+  variant: 'control',
+  performance: []  // Populated after launch
+}
+```
+
+## Deployment
+
+```typescript
+const { url, status, deployedAssets } = await deployConcept({
+  concept,
+  subdomain: {
+    subdomain: 'cfo',
+    fullDomain: 'cfo.headless.ly',
+    brandFamilyId: 'headless-ly'
+  },
+  assets: generatedAssets
+})
+
+// url: 'https://cfo.headless.ly'
+// status: 'deployed'
+// deployedAssets: ['lp-001', 'blog-001', 'blog-002', ...]
+```
+
+## Deployment Checklist
+
+1. **Assets ready** — All required assets generated
+2. **Domain configured** — Subdomain DNS set up
+3. **Analytics installed** — Tracking in place
+4. **Forms connected** — Lead capture working
+5. **Email automation** — Sequences configured
+
+## See Also
+
+- [Experimentation](/workflow/experimentation) — Test deployed concepts
+- [Assets](/experiment/assets) — Asset management

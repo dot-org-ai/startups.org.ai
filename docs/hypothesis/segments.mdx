@@ -1,0 +1,54 @@
+---
+title: Customer Segments
+description: Target the right customers for your startup concepts
+icon: Users
+---
+
+# Customer Segments
+
+Define which customer segments your hypothesis targets. Segment selection affects everything from pricing to go-to-market strategy.
+
+```typescript
+import { CustomerSegment } from 'startups.org.ai'
+
+const segments: CustomerSegment[] = [
+  'enterprise',    // 1000+ employees
+  'mid-market',    // 100-1000 employees
+  'smb',           // 10-100 employees
+  'startup',       // Early-stage companies
+  'solopreneur',   // Individual entrepreneurs
+  'agency',        // Marketing, design, dev agencies
+  'consumer'       // Individual consumers (B2C)
+]
+```
+
+## Segment Characteristics
+
+| Segment | Size | Sales Cycle | ACV | Decision Maker |
+|---------|------|-------------|-----|----------------|
+| Enterprise | 1000+ | 6-18 months | $50K-$1M+ | Committee |
+| Mid-Market | 100-1000 | 2-6 months | $10K-$50K | VP/Director |
+| SMB | 10-100 | 1-4 weeks | $1K-$10K | Owner/Manager |
+| Startup | <50 | Days-weeks | $500-$5K | Founder |
+| Solopreneur | 1 | Instant | $10-$500/mo | Self |
+| Agency | Varies | 1-4 weeks | $2K-$20K | Principal |
+| Consumer | 1 | Instant | $0-$50/mo | Self |
+
+## Segment Selection
+
+Choose segments based on your hypothesis:
+
+```typescript
+const hypothesis: Hypothesis = {
+  id: 'vertical-ai-cfos',
+  businessModel: {
+    segments: ['mid-market', 'smb'],  // Priority order matters
+    // Mid-market is primary target, SMB is secondary
+  }
+}
+```
+
+## See Also
+
+- [Business Model](/hypothesis/business-model) — Model configuration
+- [Pricing](/hypothesis/pricing) — Segment-appropriate pricing

@@ -1,0 +1,143 @@
+---
+title: Productized Services
+description: Package AI capabilities as fixed-scope, fixed-price services
+icon: Package
+---
+
+# Productized Services
+
+Productized services package AI capabilities into clear, purchasable offerings with defined scope, pricing, and delivery.
+
+```typescript
+import { ProductizedService, ServiceScope, ServiceDeliverable } from 'startups.org.ai'
+
+const scope: ServiceScope = {
+  included: [
+    'Monthly P&L analysis',
+    'Cash flow forecast',
+    'Variance reporting',
+    'Executive summary'
+  ],
+  excluded: [
+    'Tax preparation',
+    'Audit support',
+    'Custom integrations'
+  ],
+  limitations: [
+    'Up to 10 entities',
+    'QuickBooks or Xero integration required'
+  ],
+  prerequisites: [
+    'Connected accounting system',
+    '12 months historical data'
+  ]
+}
+
+const deliverables: ServiceDeliverable[] = [
+  {
+    name: 'Executive Dashboard',
+    description: 'Interactive dashboard with key financial metrics',
+    format: 'Web dashboard',
+    example: 'https://example.com/demo-dashboard'
+  },
+  {
+    name: 'Monthly Report',
+    description: 'Comprehensive PDF report for board distribution',
+    format: 'PDF'
+  }
+]
+```
+
+## Service Structure
+
+### Scope Definition
+
+Define what's in and out:
+
+| Element | Purpose |
+|---------|---------|
+| `included` | What customer gets |
+| `excluded` | What's explicitly NOT included |
+| `limitations` | Constraints and caps |
+| `prerequisites` | What customer must provide |
+
+### Deliverables
+
+What the customer receives:
+
+```typescript
+const deliverable: ServiceDeliverable = {
+  name: 'Financial Analysis Report',
+  description: 'Comprehensive analysis of financial health',
+  format: 'PDF + Interactive Dashboard',
+  example: 'Link to sample'
+}
+```
+
+### Timeline
+
+Set clear expectations:
+
+```typescript
+const timeline: ServiceTimeline = {
+  turnaround: '5 business days',
+  rushAvailable: true,
+  rushPremium: '+50% fee',
+  sla: '99% on-time delivery'
+}
+```
+
+## Service Process
+
+Define the delivery workflow (3-7 steps):
+
+```typescript
+const process: ServiceProcess = {
+  steps: [
+    {
+      order: 1,
+      name: 'Onboarding',
+      description: 'Connect data sources and configure settings',
+      duration: '30 minutes',
+      customerAction: 'Grant access to accounting system',
+      automated: false
+    },
+    {
+      order: 2,
+      name: 'Data Analysis',
+      description: 'AI analyzes historical financial data',
+      duration: '2 hours',
+      automated: true
+    },
+    {
+      order: 3,
+      name: 'Report Generation',
+      description: 'Generate comprehensive financial report',
+      duration: '1 hour',
+      automated: true
+    },
+    {
+      order: 4,
+      name: 'Quality Review',
+      description: 'Human review of AI-generated output',
+      duration: '30 minutes',
+      automated: false
+    },
+    {
+      order: 5,
+      name: 'Delivery',
+      description: 'Deliver report and walkthrough',
+      customerAction: 'Schedule review call',
+      automated: false
+    }
+  ],
+  totalDuration: '24-48 hours',
+  customerTouchpoints: 3,
+  automationPercentage: 70
+}
+```
+
+## See Also
+
+- [Patterns](/service/patterns) — Common service patterns
+- [Pricing](/service/pricing) — Pricing strategies

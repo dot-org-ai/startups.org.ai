@@ -1,0 +1,91 @@
+---
+title: Startup
+description: Concrete startup concepts with branding, scoring, and lifecycle management
+icon: Rocket
+---
+
+# Startup Concept
+
+A StartupConcept is the concrete manifestation of crossing a Hypothesis with Ontology dimensions. Each concept has a unique brand, positioning, viability score, and lifecycle status.
+
+```typescript
+import { StartupConcept } from 'startups.org.ai'
+
+const concept: StartupConcept = {
+  id: 'cfo-ai-healthcare',
+  slug: 'cfo-ai-healthcare',
+  version: 1,
+
+  hypothesisId: 'vertical-ai-cfos',
+  ontologyTarget: {
+    occupationId: 'ChiefFinancialOfficer',
+    industryId: 'Healthcare'
+  },
+
+  name: {
+    name: 'MedFinance AI',
+    tagline: 'Your AI CFO for Healthcare',
+    domain: 'medfinance.ai',
+    naming: {
+      pattern: 'compound',
+      memorability: 'high',
+      spellability: 'easy'
+    }
+  },
+
+  oneLiner: 'AI-powered financial management for healthcare organizations',
+  problem: {
+    external: 'Healthcare CFOs spend 60% of time on manual reporting',
+    internal: 'Constant anxiety about compliance and cash flow',
+    philosophical: 'Healthcare should focus on patients, not paperwork'
+  },
+
+  viability: {
+    overall: 78,
+    tier: 'A',
+    recommendation: 'test-hypothesis'
+  },
+
+  status: 'scored'
+}
+```
+
+<Cards columns={2}>
+  <Card icon={<Palette />} title="Branding" href="/startup/branding">
+    Names, domains, and visual identity
+  </Card>
+  <Card icon={<BarChart3 />} title="Viability" href="/startup/viability">
+    Scoring and ranking concepts
+  </Card>
+  <Card icon={<GitFork />} title="Variants" href="/startup/variants">
+    Positioning and segment variations
+  </Card>
+  <Card icon={<CircleDot />} title="Status" href="/startup/status">
+    Lifecycle from generated to launched
+  </Card>
+</Cards>
+
+## Concept Lifecycle
+
+```
+generated → scored → selected → experimenting → validated/invalidated → building → launched
+```
+
+| Status | Description |
+|--------|-------------|
+| `generated` | Just created, not yet reviewed |
+| `scored` | Viability score assigned |
+| `selected` | Chosen for experimentation |
+| `experimenting` | Active experiments running |
+| `validated` | Hypothesis confirmed |
+| `invalidated` | Hypothesis disproven |
+| `building` | Product under construction |
+| `launched` | Live in market |
+| `paused` | Temporarily on hold |
+| `killed` | Abandoned |
+
+## See Also
+
+- [Hypothesis](/hypothesis) — Where concepts originate
+- [Experiment](/experiment) — Validate concepts
+- [Viability](/startup/viability) — Scoring system

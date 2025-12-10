@@ -1,0 +1,16 @@
+{
+  "title": "Ontology",
+  "description": "Business dimensions for startup generation",
+  "root": true,
+  "icon": "Boxes",
+  "pages": [
+    "index",
+    "---Dimensions---",
+    "occupations",
+    "industries",
+    "processes",
+    "tasks",
+    "---Reference---",
+    "relationships"
+  ]
+}

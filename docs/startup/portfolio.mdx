@@ -1,0 +1,88 @@
+---
+title: Portfolio
+description: Organize and manage startup concepts
+icon: FolderKanban
+---
+
+# Portfolio
+
+A Portfolio organizes startup concepts for tracking, comparison, and resource allocation.
+
+```typescript
+import { StartupPortfolio } from 'startups.org.ai'
+
+const portfolio: StartupPortfolio = {
+  id: 'q4-2024-experiments',
+  name: 'Q4 2024 Experiments',
+  description: 'Vertical AI CFO concepts for validation',
+
+  concepts: [
+    'cfo-ai-healthcare',
+    'cfo-ai-legal',
+    'cfo-ai-manufacturing'
+  ],
+
+  hypotheses: ['vertical-ai-cfos'],
+  brandFamilies: ['headless-ly'],
+
+  stats: {
+    totalConcepts: 3,
+    byStatus: {
+      experimenting: 2,
+      validated: 1
+    },
+    byTier: {
+      'A': 2,
+      'B': 1
+    },
+    avgViabilityScore: 76
+  }
+}
+```
+
+## Portfolio Views
+
+**By Hypothesis** — Group concepts by their parent hypothesis
+
+```typescript
+const byHypothesis = groupBy(concepts, c => c.hypothesisId)
+```
+
+**By Brand Family** — Group concepts by brand family
+
+```typescript
+const byBrandFamily = groupBy(concepts, c => c.brandFamilyId)
+```
+
+**By Status** — Track pipeline health
+
+```typescript
+const byStatus = groupBy(concepts, c => c.status)
+```
+
+**By Tier** — Focus on winners
+
+```typescript
+const byTier = groupBy(concepts, c => c.viability.tier)
+```
+
+## Portfolio Metrics
+
+| Metric | Description |
+|--------|-------------|
+| `totalConcepts` | Number of concepts in portfolio |
+| `byStatus` | Breakdown by lifecycle status |
+| `byTier` | Breakdown by viability tier |
+| `avgViabilityScore` | Average viability across concepts |
+
+## Portfolio Strategy
+
+- **Wide funnel** — Generate many concepts, score ruthlessly
+- **Diversification** — Spread across hypotheses and industries
+- **Resource allocation** — Focus experiments on highest-tier concepts
+- **Kill fast** — Move invalidated concepts to killed status quickly
+
+## See Also
+
+- [Status](/startup/status) — Lifecycle management
+- [Viability](/startup/viability) — Scoring and ranking

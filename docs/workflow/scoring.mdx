@@ -1,0 +1,123 @@
+---
+title: Scoring
+description: Evaluate concept viability and rank
+icon: BarChart3
+---
+
+# Scoring Phase
+
+The scoring phase evaluates each concept's viability across multiple dimensions to identify winners.
+
+```typescript
+import { scoreConcept, rankConcepts } from 'startups.org.ai'
+
+// Score individual concept
+const { score, topStrengths, topWeaknesses, recommendation } = await scoreConcept({
+  concept,
+  enrichedIndustry,
+  enrichedOccupation
+})
+
+// Rank multiple concepts
+const { ranked, tiers } = await rankConcepts({
+  concepts,
+  weights: {
+    marketSize: 0.15,
+    problemSeverity: 0.20,
+    solutionFit: 0.20,
+    // ...
+  },
+  topN: 10
+})
+```
+
+## Scoring Dimensions
+
+| Dimension | Weight | Evaluates |
+|-----------|--------|-----------|
+| `marketSize` | 15% | TAM/SAM potential |
+| `problemSeverity` | 20% | How painful is the problem? |
+| `solutionFit` | 20% | How well does AI solve it? |
+| `competition` | 10% | Competitive landscape |
+| `gtmEase` | 15% | Ease of reaching customers |
+| `monetization` | 10% | Ability to monetize |
+| `defensibility` | 5% | Moat potential |
+| `timing` | 5% | Market timing |
+
+## Score Output
+
+```typescript
+const score: ViabilityScore = {
+  overall: 78,
+  dimensions: {
+    marketSize: {
+      dimension: 'Market Size',
+      score: 85,
+      weight: 0.15,
+      rationale: 'Healthcare CFO market is $2B+ TAM',
+      signals: ['Market research', 'Competitor funding']
+    },
+    problemSeverity: { ... },
+    solutionFit: { ... },
+    // ...
+  },
+  tier: 'A',
+  recommendation: 'test-hypothesis'
+}
+
+const analysis = {
+  topStrengths: [
+    'Large addressable market',
+    'Severe pain point',
+    'AI-native solution possible'
+  ],
+  topWeaknesses: [
+    'Crowded competitive space',
+    'Long enterprise sales cycles'
+  ],
+  recommendation: 'Strong opportunity. Run demand validation experiment.'
+}
+```
+
+## Ranking Concepts
+
+```typescript
+const { ranked, tiers } = await rankConcepts({
+  concepts,
+  topN: 20  // Return top 20
+})
+
+// ranked: sorted by score
+// tiers: { 'S': ['id1'], 'A': ['id2', 'id3'], ... }
+```
+
+## Custom Weights
+
+Adjust dimension weights for your strategy:
+
+```typescript
+const weights = {
+  // Prioritize problem severity
+  problemSeverity: 0.30,  // Up from 0.20
+  solutionFit: 0.25,      // Up from 0.20
+  marketSize: 0.10,       // Down from 0.15
+  // ...
+}
+
+const { ranked } = await rankConcepts({ concepts, weights })
+```
+
+## Tier Classification
+
+| Tier | Score | Recommendation |
+|------|-------|----------------|
+| S | 90-100 | Pursue aggressively |
+| A | 80-89 | Test hypothesis |
+| B | 70-79 | Explore further |
+| C | 60-69 | Deprioritize |
+| D | <60 | Skip |
+
+## See Also
+
+- [Viability](/startup/viability) — Detailed scoring docs
+- [Branding](/workflow/branding) — Brand scored concepts

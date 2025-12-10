@@ -1,0 +1,121 @@
+---
+title: Productization
+description: Package concepts as productized services
+icon: Package
+---
+
+# Productization Phase
+
+The productization phase packages branded concepts as productized services with clear scope, deliverables, pricing, and process.
+
+```typescript
+import { productizeService } from 'startups.org.ai'
+
+const { service, landingPageCopy } = await productizeService({
+  concept,
+  pattern: 'audit',  // Service pattern to follow
+  pricingTiers: 3
+})
+```
+
+## Service Patterns
+
+Choose a pattern that fits the concept:
+
+| Pattern | Description | Example |
+|---------|-------------|---------|
+| `audit` | Review and assess | Financial Health Audit |
+| `analysis` | Deep analysis | Cash Flow Analysis |
+| `done-for-you` | Full service | Monthly Reporting Service |
+| `managed` | Ongoing management | Managed Finance Operations |
+| `coaching` | 1:1 guidance | CFO Coaching |
+
+## Productized Service Output
+
+```typescript
+const service: ProductizedService = {
+  id: 'cfo-ai-healthcare-audit',
+  name: 'Healthcare Financial Audit',
+  slug: 'healthcare-financial-audit',
+
+  positioning: {
+    category: 'financial-analysis',
+    tagline: 'AI-powered financial health assessment',
+    headline: 'Know Your Financial Health in 24 Hours',
+    problem: 'Healthcare CFOs lack visibility into financial performance',
+    solution: 'AI analyzes your financials and delivers actionable insights',
+    transformation: 'From uncertainty to confidence'
+  },
+
+  scope: {
+    included: ['P&L analysis', 'Cash flow assessment', 'KPI benchmarking'],
+    excluded: ['Tax preparation', 'Audit support'],
+    limitations: ['Up to $50M revenue'],
+    prerequisites: ['QuickBooks or Xero access']
+  },
+
+  deliverables: [
+    { name: 'Executive Report', format: 'PDF', description: '...' },
+    { name: 'Dashboard', format: 'Web', description: '...' }
+  ],
+
+  timeline: {
+    turnaround: '24-48 hours',
+    rushAvailable: true,
+    sla: '99% on-time'
+  },
+
+  process: {
+    steps: [
+      { order: 1, name: 'Connect', automated: false },
+      { order: 2, name: 'Analyze', automated: true },
+      { order: 3, name: 'Review', automated: false },
+      { order: 4, name: 'Deliver', automated: true }
+    ],
+    automationPercentage: 75
+  },
+
+  pricing: {
+    tiers: [
+      { name: 'Starter', price: 499, ... },
+      { name: 'Pro', price: 999, popular: true, ... },
+      { name: 'Enterprise', price: 2499, ... }
+    ]
+  }
+}
+```
+
+## Landing Page Copy
+
+```typescript
+const { landingPageCopy } = await productizeService({ concept, pattern: 'audit' })
+
+landingPageCopy: {
+  headline: 'Know Your Financial Health in 24 Hours',
+  subheadline: 'AI-powered analysis trusted by 500+ healthcare organizations',
+  features: [
+    'Comprehensive P&L analysis',
+    'Cash flow forecasting',
+    'Industry benchmarking',
+    'Actionable recommendations'
+  ],
+  cta: 'Get Your Audit'
+}
+```
+
+## Pattern Selection
+
+```typescript
+// Map concept characteristics to patterns
+const selectPattern = (concept: StartupConcept): ServicePattern => {
+  if (concept.serviceType === 'full-automation') return 'done-for-you'
+  if (concept.aiOverlays.includes('coaching')) return 'coaching'
+  if (concept.aiOverlays.includes('analysis')) return 'analysis'
+  return 'audit'  // Default
+}
+```
+
+## See Also
+
+- [Service Patterns](/service/patterns) — All patterns
+- [Deployment](/workflow/deployment) — Deploy productized services

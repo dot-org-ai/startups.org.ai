@@ -1,0 +1,95 @@
+---
+title: Workflow
+description: Orchestration pipelines for the startup factory
+icon: GitBranch
+---
+
+# Workflow
+
+Workflows orchestrate the startup factory pipeline from hypothesis to validated startup. Each phase builds on the previous, transforming raw ideas into tested concepts.
+
+```typescript
+import { WorkflowExecution, executeWorkflow } from 'startups.org.ai'
+
+const execution = await executeWorkflow({
+  hypothesis: verticalAICFO,
+  config: {
+    hypothesisId: 'vertical-ai-cfos',
+    ontologyFilters: {
+      industryIds: ['healthcare', 'legal', 'manufacturing']
+    },
+    controls: {
+      maxConcepts: 10,
+      minViabilityScore: 70,
+      includeVariants: true
+    }
+  },
+  brandFamily: headlessLy,
+  experimentBudget: 5000
+})
+```
+
+<Cards columns={2}>
+  <Card icon={<Sparkles />} title="Enrichment" href="/workflow/enrichment">
+    AI-enrich ontology entities
+  </Card>
+  <Card icon={<Factory />} title="Generation" href="/workflow/generation">
+    Cross-product concepts at scale
+  </Card>
+  <Card icon={<BarChart3 />} title="Scoring" href="/workflow/scoring">
+    Viability scoring and ranking
+  </Card>
+  <Card icon={<Palette />} title="Branding" href="/workflow/branding">
+    Names, domains, and identity
+  </Card>
+  <Card icon={<Package />} title="Productization" href="/workflow/productization">
+    Package as services
+  </Card>
+  <Card icon={<Rocket />} title="Deployment" href="/workflow/deployment">
+    Generate assets and deploy
+  </Card>
+  <Card icon={<FlaskConical />} title="Experimentation" href="/workflow/experimentation">
+    Validate through experiments
+  </Card>
+  <Card icon={<LineChart />} title="Analysis" href="/workflow/analysis">
+    Analyze results and iterate
+  </Card>
+</Cards>
+
+## Pipeline Phases
+
+```
+ENRICH → GENERATE → SCORE → BRAND → PRODUCTIZE → DEPLOY → EXPERIMENT → ANALYZE
+```
+
+| Phase | Function | Output |
+|-------|----------|--------|
+| Enrichment | Add AI insights to ontology | Enriched entities |
+| Generation | Cross-product hypothesis × ontology | Raw concepts |
+| Scoring | Evaluate viability | Ranked concepts |
+| Branding | Assign names and identity | Branded concepts |
+| Productization | Package as services | Service definitions |
+| Deployment | Generate and deploy assets | Live sites |
+| Experimentation | Run validation experiments | Experiment data |
+| Analysis | Analyze and recommend | Validated winners |
+
+## Workflow Context
+
+```typescript
+const context: WorkflowContext = {
+  workflowId: 'wf-2024-001',
+  hypothesisId: 'vertical-ai-cfos',
+  brandFamilyId: 'headless-ly',
+  phase: 'generation',
+  startedAt: '2024-01-15T10:00:00Z',
+  config: {
+    maxConcepts: 100,
+    minViabilityScore: 60
+  }
+}
+```
+
+## See Also
+
+- [Enrichment](/workflow/enrichment) — Phase 1
+- [Generation](/workflow/generation) — Phase 2

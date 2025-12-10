@@ -1,0 +1,106 @@
+---
+title: Templates
+description: Pre-built experiment playbooks for common validation scenarios
+icon: FileCode
+---
+
+# Experiment Templates
+
+Templates provide pre-configured experiments for common validation scenarios. Start with a template and customize for your concept.
+
+```typescript
+import { ExperimentTemplate } from 'startups.org.ai'
+
+const template: ExperimentTemplate = {
+  id: 'landing-page-validation',
+  name: 'Landing Page Validation',
+  description: 'Validate demand with a targeted landing page and waitlist',
+
+  type: 'demand-validation',
+  channel: 'landing-page',
+  suggestedDuration: '2 weeks',
+  suggestedBudget: 500,
+
+  primaryMetrics: ['waitlist-signups', 'conversion-rate'],
+  secondaryMetrics: ['time-on-site', 'bounce-rate'],
+
+  successCriteriaTemplate: [
+    { metric: 'conversion-rate', operator: '>=', benchmarkType: 'absolute', benchmarkValue: 2 },
+    { metric: 'waitlist-signups', operator: '>=', benchmarkType: 'absolute', benchmarkValue: 100 }
+  ],
+
+  requiredAssets: ['landing-page', 'email-sequence'],
+
+  playbook: {
+    setup: [
+      'Create landing page with clear value prop',
+      'Set up email capture form',
+      'Configure analytics tracking',
+      'Set up thank-you page with next steps'
+    ],
+    execution: [
+      'Drive traffic via chosen channel',
+      'Monitor signups daily',
+      'A/B test headlines if possible',
+      'Collect qualitative feedback'
+    ],
+    analysis: [
+      'Calculate conversion rate',
+      'Analyze traffic sources',
+      'Review time-on-page metrics',
+      'Document learnings'
+    ]
+  }
+}
+```
+
+## Available Templates
+
+### Demand Validation
+
+| Template | Channel | Duration | Budget |
+|----------|---------|----------|--------|
+| Landing Page Validation | `landing-page` | 2 weeks | $500 |
+| Waitlist Test | `waitlist` | 1 week | $200 |
+| Cold Email Validation | `cold-email` | 2 weeks | $100 |
+
+### Message Testing
+
+| Template | Channel | Duration | Budget |
+|----------|---------|----------|--------|
+| LinkedIn Message Test | `linkedin` | 1 week | $300 |
+| Twitter Thread Test | `twitter` | 1 week | $0 |
+| Ad Copy Test | `google-ads` | 2 weeks | $1000 |
+
+### Channel Testing
+
+| Template | Channel | Duration | Budget |
+|----------|---------|----------|--------|
+| SEO vs Paid Test | multiple | 4 weeks | $2000 |
+| Social Channel Comparison | social | 2 weeks | $500 |
+| Outbound Channel Test | outbound | 3 weeks | $200 |
+
+## Using Templates
+
+```typescript
+import { createExperimentFromTemplate } from 'startups.org.ai'
+
+const experiment = createExperimentFromTemplate({
+  templateId: 'landing-page-validation',
+  startupConceptId: 'cfo-ai-healthcare',
+  overrides: {
+    suggestedDuration: '3 weeks',
+    design: {
+      variants: [
+        { id: 'control', name: 'Professional Tone', allocation: 50 },
+        { id: 'variant-a', name: 'Casual Tone', allocation: 50 }
+      ]
+    }
+  }
+})
+```
+
+## See Also
+
+- [Assets](/experiment/assets) — Content assets for experiments
+- [Types](/experiment/types) — Experiment types

@@ -1,0 +1,82 @@
+---
+title: Experiment Types
+description: Types of experiments for validating and growing startups
+icon: Target
+---
+
+# Experiment Types
+
+Different experiment types serve different purposes in the startup journey.
+
+```typescript
+import { ExperimentType } from 'startups.org.ai'
+
+type Type =
+  // Validation
+  | 'demand-validation'       // Is there demand?
+  | 'message-testing'         // Which message resonates?
+  | 'channel-testing'         // Which channel works?
+  | 'price-testing'           // What price point works?
+  | 'audience-testing'        // Which audience converts?
+
+  // Growth
+  | 'acquisition'             // Can we acquire users?
+  | 'activation'              // Can we activate users?
+  | 'retention'               // Can we retain users?
+  | 'referral'                // Can we get referrals?
+  | 'revenue'                 // Can we monetize?
+
+  // Optimization
+  | 'conversion-optimization' // Improve conversion rates
+  | 'content-optimization'    // Improve content performance
+  | 'funnel-optimization'     // Improve funnel metrics
+```
+
+## Validation Experiments
+
+Run these before building to confirm demand.
+
+| Type | Question | Success Signal |
+|------|----------|----------------|
+| `demand-validation` | Is there demand? | Waitlist signups, demo requests |
+| `message-testing` | Which message works? | Higher engagement/conversion |
+| `channel-testing` | Which channel works? | Lower CAC, higher volume |
+| `price-testing` | What price works? | Conversion at target price |
+| `audience-testing` | Who is the buyer? | Segment with best metrics |
+
+## Growth Experiments
+
+Run these after product-market fit to scale.
+
+| Type | Question | Success Signal |
+|------|----------|----------------|
+| `acquisition` | Can we get users? | CAC, volume, quality |
+| `activation` | Will they use it? | Activation rate, time-to-value |
+| `retention` | Will they stay? | Retention cohorts, churn |
+| `referral` | Will they share? | Viral coefficient, NPS |
+| `revenue` | Will they pay? | Conversion rate, ARPU |
+
+## Optimization Experiments
+
+Run these to improve existing performance.
+
+| Type | Question | Success Signal |
+|------|----------|----------------|
+| `conversion-optimization` | Can we convert more? | Higher conversion rate |
+| `content-optimization` | Can content perform better? | Rankings, engagement |
+| `funnel-optimization` | Can we reduce drop-off? | Stage conversion rates |
+
+## Experiment Sequence
+
+```
+1. demand-validation    → Is this worth building?
+2. message-testing      → How do we position it?
+3. channel-testing      → Where do we find customers?
+4. price-testing        → What should we charge?
+5. audience-testing     → Who exactly is the buyer?
+```
+
+## See Also
+
+- [Channels](/experiment/channels) — Where to run experiments
+- [Templates](/experiment/templates) — Pre-built playbooks

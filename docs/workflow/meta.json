@@ -1,0 +1,18 @@
+{
+  "title": "Workflow",
+  "description": "Orchestration pipelines for the startup factory",
+  "root": true,
+  "icon": "GitBranch",
+  "pages": [
+    "index",
+    "---Phases---",
+    "enrichment",
+    "generation",
+    "scoring",
+    "branding",
+    "productization",
+    "deployment",
+    "experimentation",
+    "analysis"
+  ]
+}

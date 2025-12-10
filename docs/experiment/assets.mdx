@@ -1,0 +1,96 @@
+---
+title: Assets
+description: Content assets for running experiments
+icon: FileImage
+---
+
+# Content Assets
+
+Assets are the content pieces used in experiments—landing pages, emails, ads, and more.
+
+```typescript
+import { ContentAsset } from 'startups.org.ai'
+
+const asset: ContentAsset = {
+  id: 'lp-healthcare-cfo-v1',
+  type: 'landing-page',
+  title: 'MedFinance AI Landing Page',
+  url: 'https://medfinance.ai',
+  status: 'published',
+  variant: 'control',
+  performance: [
+    { type: 'visits', value: 1200 },
+    { type: 'conversion-rate', value: 2.5 }
+  ]
+}
+```
+
+## Asset Types
+
+| Type | Description | Used In |
+|------|-------------|---------|
+| `landing-page` | Dedicated landing page | Demand validation |
+| `blog-post` | Blog article | Content marketing, SEO |
+| `email-sequence` | Multi-email series | Nurture, outbound |
+| `ad-creative` | Ad copy and images | Paid campaigns |
+| `social-post` | Social media content | Social channels |
+| `video` | Video content | YouTube, demos |
+| `lead-magnet` | Downloadable resource | Lead capture |
+| `case-study` | Customer story | Trust building |
+
+## Asset Status
+
+| Status | Description |
+|--------|-------------|
+| `draft` | Being created |
+| `review` | Ready for review |
+| `published` | Live and active |
+| `paused` | Temporarily disabled |
+| `archived` | No longer in use |
+
+## Asset Tracking
+
+Track performance for each asset:
+
+```typescript
+const assetWithMetrics: ContentAsset = {
+  id: 'email-sequence-v1',
+  type: 'email-sequence',
+  title: 'Healthcare CFO Nurture Sequence',
+  status: 'published',
+  performance: [
+    { type: 'emails-sent', value: 500 },
+    { type: 'email-open-rate', value: 35.2 },
+    { type: 'email-reply-rate', value: 4.8 },
+    { type: 'meetings-booked', value: 12 }
+  ]
+}
+```
+
+## Asset Variants
+
+Create variants for A/B testing:
+
+```typescript
+const variants: ContentAsset[] = [
+  {
+    id: 'lp-control',
+    type: 'landing-page',
+    title: 'Control - Professional',
+    variant: 'control',
+    status: 'published'
+  },
+  {
+    id: 'lp-variant-a',
+    type: 'landing-page',
+    title: 'Variant A - Casual',
+    variant: 'variant-a',
+    status: 'published'
+  }
+]
+```
+
+## See Also
+
+- [Templates](/experiment/templates) — Required assets by template
+- [Metrics](/experiment/metrics) — Track asset performance

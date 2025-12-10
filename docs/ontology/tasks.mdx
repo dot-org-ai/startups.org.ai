@@ -1,0 +1,107 @@
+---
+title: Tasks
+description: Work tasks from O*NET taxonomy
+icon: ListChecks
+---
+
+# Tasks
+
+Tasks represent specific work activities from O*NET, broken down into verb-object structure for AI analysis.
+
+```typescript
+import { Task, TaskCategory } from 'startups.org.ai'
+
+const task: Task = {
+  ns: 'tasks.org.ai',
+  type: 'Task',
+  id: 'PrepareFinancialReports',
+  name: 'Prepare Financial Reports',
+  description: 'Prepare or direct preparation of financial statements, business activity reports, financial position forecasts, annual budgets, or reports required by regulatory agencies.',
+  code: 'T11-3031.00-1',
+  shortName: 'Prepare Reports',
+  sourceType: 'ONETTask',
+
+  // Parsed structure
+  verb: 'prepare',
+  object: 'financial statements',
+  preposition: 'for',
+  prepObject: 'regulatory agencies',
+  source: 'Prepare or direct preparation of financial statements...'
+}
+```
+
+## Task Structure
+
+O*NET tasks are parsed into components:
+
+| Component | Description | Example |
+|-----------|-------------|---------|
+| `verb` | Action word | "prepare", "analyze", "direct" |
+| `object` | What's acted on | "financial statements", "budgets" |
+| `preposition` | Connecting word | "for", "to", "with" |
+| `prepObject` | Object of prep | "regulatory agencies", "approval" |
+
+## Task Categories
+
+Functional categories of work:
+
+```typescript
+type TaskCategory =
+  | 'planning'        // Strategy, budgeting, forecasting
+  | 'executing'       // Doing the work
+  | 'monitoring'      // Tracking, oversight
+  | 'analyzing'       // Analysis, interpretation
+  | 'communicating'   // Reporting, presenting
+  | 'coordinating'    // Orchestration, alignment
+  | 'directing'       // Leadership, management
+  | 'creating'        // Design, development
+  | 'maintaining'     // Upkeep, optimization
+  | 'evaluating'      // Assessment, scoring
+```
+
+## High-Automation Tasks
+
+Tasks that AI can automate:
+
+| Task | Verb | Automation Potential |
+|------|------|---------------------|
+| Prepare Financial Reports | prepare | High |
+| Analyze Budget Variances | analyze | High |
+| Generate Forecasts | generate | High |
+| Compile Compliance Reports | compile | High |
+| Reconcile Accounts | reconcile | High |
+
+## Filtering Tasks
+
+```typescript
+const config: OntologyDimensionConfig = {
+  enabled: true,
+  priority: 5,
+  filter: {
+    // Target specific tasks
+    ids: ['PrepareFinancialReports', 'AnalyzeBudgetVariances'],
+    // Or by verb
+    namePattern: '^(prepare|analyze|generate|compile)',
+    // Limit granularity
+    limit: 200
+  }
+}
+```
+
+## Task-to-Startup Mapping
+
+```typescript
+const taskToStartup = (task: Task): StartupIdea => ({
+  problem: `${task.object} takes too long manually`,
+  solution: `AI-powered ${task.verb}ing of ${task.object}`,
+  valueProps: [{
+    primary: 'speed',
+    statement: `${task.verb.charAt(0).toUpperCase() + task.verb.slice(1)} ${task.object} in minutes, not hours`
+  }]
+})
+```
+
+## See Also
+
+- [Occupations](/ontology/occupations) — Tasks by occupation
+- [Processes](/ontology/processes) — Higher-level processes

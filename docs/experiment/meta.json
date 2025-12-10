@@ -1,0 +1,17 @@
+{
+  "title": "Experiment",
+  "description": "Validate startup concepts through experimentation",
+  "root": true,
+  "icon": "FlaskConical",
+  "pages": [
+    "index",
+    "---Configuration---",
+    "channels",
+    "types",
+    "metrics",
+    "---Execution---",
+    "templates",
+    "assets",
+    "funnel"
+  ]
+}

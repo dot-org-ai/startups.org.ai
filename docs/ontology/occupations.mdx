@@ -1,0 +1,86 @@
+---
+title: Occupations
+description: Job titles and roles from O*NET taxonomy
+icon: Briefcase
+---
+
+# Occupations
+
+Occupations represent job titles and roles from the O*NET Standard Occupational Classification (SOC) system.
+
+```typescript
+import { Occupation, OccupationSegment, OccupationCategory } from 'startups.org.ai'
+
+const occupation: Occupation = {
+  ns: 'jobs.org.ai',
+  type: 'Job',
+  id: 'ChiefFinancialOfficer',
+  name: 'Chief Financial Officer',
+  description: 'Plan, direct, or coordinate accounting, investing, banking, insurance, securities, and other financial activities of a branch, office, or department of an establishment.',
+  code: '11-3031.00',
+  shortName: 'CFO',
+  sourceType: 'ONETOccupation',
+  occupationCode: '11-3031.00'
+}
+```
+
+## SOC Hierarchy
+
+| Level | Digits | Example |
+|-------|--------|---------|
+| Major Group | 2 | 11 - Management Occupations |
+| Minor Group | 3 | 11-3 - Operations Specialties Managers |
+| Broad Occupation | 5 | 11-303 - Financial Managers |
+| Detailed Occupation | 6 | 11-3031 - Financial Managers |
+
+## Occupation Segments
+
+Target high-value segments for startup concepts:
+
+```typescript
+type OccupationSegment =
+  | 'c-suite'       // C-level executives
+  | 'director'      // Directors
+  | 'manager'       // Managers
+  | 'specialist'    // Specialists
+  | 'analyst'       // Analysts
+  | 'coordinator'   // Coordinators
+  | 'professional'  // Professionals
+  | 'technician'    // Technicians
+  | 'operator'      // Operators
+  | 'service'       // Service workers
+```
+
+## High-Value Occupations
+
+| Occupation | Code | Segment |
+|------------|------|---------|
+| Chief Executive | 11-1011 | c-suite |
+| Chief Financial Officer | 11-3031 | c-suite |
+| Marketing Manager | 11-2021 | manager |
+| Software Developer | 15-1256 | professional |
+| Accountant | 13-2011 | professional |
+| Human Resources Specialist | 13-1071 | specialist |
+
+## Filtering Occupations
+
+```typescript
+const config: OntologyDimensionConfig = {
+  enabled: true,
+  priority: 8,
+  filter: {
+    ids: ['ChiefFinancialOfficer', 'Controller', 'Accountant'],
+    // Or filter by hierarchy level
+    levels: [1, 2],  // Major and minor groups
+    // Or filter by name pattern
+    namePattern: 'CFO|Financial|Account',
+    // Or limit total
+    limit: 50
+  }
+}
+```
+
+## See Also
+
+- [Tasks](/ontology/tasks) — Work tasks by occupation
+- [Dimensions](/hypothesis/dimensions) — Configure for hypotheses

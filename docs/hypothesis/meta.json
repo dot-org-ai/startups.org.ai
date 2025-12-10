@@ -1,0 +1,16 @@
+{
+  "title": "Hypothesis",
+  "description": "Meta-strategies that define classes of startups",
+  "root": true,
+  "icon": "Lightbulb",
+  "pages": [
+    "index",
+    "---Configuration---",
+    "business-model",
+    "segments",
+    "value-props",
+    "pricing",
+    "---Dimensions---",
+    "dimensions"
+  ]
+}

@@ -1,0 +1,88 @@
+---
+title: Processes
+description: Business processes from APQC Process Classification Framework
+icon: Workflow
+---
+
+# Processes
+
+Processes represent business activities from the APQC Process Classification Framework (PCF).
+
+```typescript
+import { Process, ProcessCategory } from 'startups.org.ai'
+
+const process: Process = {
+  ns: 'process.org.ai',
+  type: 'Process',
+  id: 'ManageAccountsReceivable',
+  name: 'Manage Accounts Receivable',
+  description: 'Process customer credit, invoice customers, process AR, manage and process collections, manage and process adjustments and deductions.',
+  code: '8.2',
+  shortName: 'AR Management',
+  sourceType: 'APQC',
+  level: 2
+}
+```
+
+## PCF Hierarchy
+
+| Level | Description | Example |
+|-------|-------------|---------|
+| 1 | Category | 8.0 Manage Financial Resources |
+| 2 | Process Group | 8.2 Perform Revenue Accounting |
+| 3 | Process | 8.2.1 Process Customer Credit |
+| 4 | Activity | 8.2.1.1 Establish Credit Policies |
+| 5 | Task | 8.2.1.1.1 Define Credit Limits |
+
+## Process Categories
+
+Top-level APQC categories:
+
+```typescript
+type ProcessCategory =
+  | 'develop-vision-strategy'        // 1.0
+  | 'develop-products-services'      // 2.0
+  | 'market-sell'                    // 3.0
+  | 'deliver-products-services'      // 4.0
+  | 'manage-customer-service'        // 5.0
+  | 'develop-manage-human-capital'   // 6.0
+  | 'manage-information-technology'  // 7.0
+  | 'manage-financial-resources'     // 8.0
+  | 'acquire-construct-manage-assets'// 9.0
+  | 'manage-enterprise-risk'         // 10.0
+  | 'manage-external-relationships'  // 11.0
+  | 'develop-manage-capabilities'    // 12.0
+```
+
+## High-Value Processes
+
+| Process | Code | Category |
+|---------|------|----------|
+| Strategic Planning | 1.1 | develop-vision-strategy |
+| Product Development | 2.2 | develop-products-services |
+| Pricing | 3.2 | market-sell |
+| Order Management | 4.2 | deliver-products-services |
+| Invoice & Billing | 8.2 | manage-financial-resources |
+| Recruitment | 6.1 | develop-manage-human-capital |
+
+## Filtering Processes
+
+```typescript
+const config: OntologyDimensionConfig = {
+  enabled: true,
+  priority: 9,
+  filter: {
+    // Target financial processes
+    ids: ['ManageAccountsPayable', 'ManageAccountsReceivable', 'ProcessPayroll'],
+    // Or filter by level
+    levels: [2, 3],  // Process groups and processes
+    // Or by category pattern
+    namePattern: 'Financial|Invoice|Payment|Accounting'
+  }
+}
+```
+
+## See Also
+
+- [Tasks](/ontology/tasks) — Granular work tasks
+- [Industries](/ontology/industries) — Industry-specific processes

@@ -1,0 +1,89 @@
+---
+title: Experiment
+description: Validate startup concepts through systematic experimentation
+icon: FlaskConical
+---
+
+# Experiment
+
+Experiments validate startup concepts before investing in building. Test demand, messaging, channels, and pricing through structured experiments.
+
+```typescript
+import { Experiment, ExperimentType, ExperimentChannel } from 'startups.org.ai'
+
+const experiment: Experiment = {
+  id: 'cfo-ai-healthcare-landing-page',
+  name: 'Healthcare CFO Landing Page Test',
+  description: 'Validate demand with targeted landing page',
+
+  startupConceptId: 'cfo-ai-healthcare',
+
+  type: 'demand-validation',
+  channel: 'landing-page',
+  channelCategory: 'direct',
+
+  hypothesis: {
+    statement: 'If we create a landing page targeting healthcare CFOs, then we will get 2%+ conversion to waitlist because they actively seek AI solutions for financial reporting.',
+    assumption: 'Healthcare CFOs are searching for AI financial tools',
+    successCriteria: [
+      { metric: 'conversion-rate', operator: '>=', target: 2, description: '2%+ waitlist conversion' }
+    ]
+  },
+
+  design: {
+    type: 'ab-test',
+    variants: [
+      { id: 'control', name: 'Professional', allocation: 50 },
+      { id: 'variant-a', name: 'Technical', allocation: 50 }
+    ],
+    duration: '2 weeks'
+  },
+
+  status: 'running'
+}
+```
+
+<Cards columns={2}>
+  <Card icon={<Radio />} title="Channels" href="/experiment/channels">
+    Organic, social, outbound, and paid
+  </Card>
+  <Card icon={<Target />} title="Types" href="/experiment/types">
+    Validation, growth, and optimization
+  </Card>
+  <Card icon={<LineChart />} title="Metrics" href="/experiment/metrics">
+    Traffic, engagement, and conversion
+  </Card>
+  <Card icon={<FileCode />} title="Templates" href="/experiment/templates">
+    Pre-built experiment playbooks
+  </Card>
+</Cards>
+
+## Experiment Lifecycle
+
+```
+planned → setup → running → paused → completed → analyzing → concluded
+```
+
+| Status | Description |
+|--------|-------------|
+| `planned` | Designed but not started |
+| `setup` | Being configured |
+| `running` | Currently active |
+| `paused` | Temporarily stopped |
+| `completed` | Finished running |
+| `analyzing` | Reviewing results |
+| `concluded` | Analysis complete |
+
+## Results
+
+| Result | Description |
+|--------|-------------|
+| `winner` | Clear winner identified |
+| `loser` | Failed to meet criteria |
+| `inconclusive` | Not enough data |
+| `learning` | Generated insights but no clear winner |
+
+## See Also
+
+- [Channels](/experiment/channels) — Where to run experiments
+- [Metrics](/experiment/metrics) — What to measure

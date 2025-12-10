@@ -1,0 +1,135 @@
+---
+title: Service Catalog
+description: Organize and present your service offerings
+icon: BookOpen
+---
+
+# Service Catalog
+
+A Service Catalog organizes multiple productized services into a coherent offering.
+
+```typescript
+import { ServiceCatalog, ServicePackage } from 'startups.org.ai'
+
+const catalog: ServiceCatalog = {
+  brandName: 'Headless CFO',
+  tagline: 'AI-Powered Financial Intelligence',
+
+  services: [
+    financialReportingService,
+    cashFlowForecastingService,
+    budgetAnalysisService,
+    complianceMonitoringService
+  ],
+
+  packages: [
+    {
+      id: 'complete-finance-suite',
+      name: 'Complete Finance Suite',
+      description: 'All financial services bundled',
+      services: [
+        'financial-reporting',
+        'cash-flow-forecasting',
+        'budget-analysis',
+        'compliance-monitoring'
+      ],
+      discount: 25,
+      positioning: 'Best value for comprehensive financial management',
+      idealFor: 'Growing businesses with complex financial needs'
+    }
+  ],
+
+  categories: [
+    {
+      name: 'Reporting',
+      description: 'Financial reporting and analysis',
+      serviceIds: ['financial-reporting', 'budget-analysis']
+    },
+    {
+      name: 'Planning',
+      description: 'Forecasting and planning',
+      serviceIds: ['cash-flow-forecasting']
+    },
+    {
+      name: 'Compliance',
+      description: 'Regulatory compliance',
+      serviceIds: ['compliance-monitoring']
+    }
+  ]
+}
+```
+
+## Service Categories
+
+Organize services by function:
+
+| Category | Description |
+|----------|-------------|
+| Research & Analysis | Market research, competitive analysis |
+| Content & Creative | Content creation, design, video |
+| Marketing & Growth | SEO, ads, social, lead gen |
+| Operations & Admin | Bookkeeping, data entry, support |
+| Technical | Code review, security, integrations |
+| Strategy & Consulting | Strategy sessions, roadmaps |
+
+## Service Packages
+
+Bundle related services:
+
+```typescript
+const package: ServicePackage = {
+  id: 'growth-package',
+  name: 'Growth Package',
+  description: 'Everything you need to accelerate growth',
+  services: ['seo-audit', 'content-strategy', 'landing-page-optimization'],
+  discount: 20,  // 20% off vs buying separately
+  positioning: 'Complete growth solution in one package',
+  idealFor: 'Startups looking to accelerate customer acquisition'
+}
+```
+
+## Catalog Organization
+
+### By Customer Segment
+
+| Segment | Services |
+|---------|----------|
+| Startup | Lean packages, self-serve |
+| SMB | Core packages, some support |
+| Enterprise | Custom packages, dedicated support |
+
+### By Use Case
+
+| Use Case | Services |
+|----------|----------|
+| Getting Started | Audit, assessment |
+| Growing | Optimization, management |
+| Scaling | Transformation, consulting |
+
+### By Industry
+
+| Industry | Services |
+|----------|----------|
+| Healthcare | HIPAA-compliant offerings |
+| Finance | SOC 2 certified services |
+| Legal | Confidentiality-focused |
+
+## Catalog Presentation
+
+```typescript
+const categorizedCatalog = catalog.categories.map(category => ({
+  name: category.name,
+  description: category.description,
+  services: category.serviceIds.map(id =>
+    catalog.services.find(s => s.id === id)
+  ),
+  packages: catalog.packages.filter(p =>
+    p.services.some(s => category.serviceIds.includes(s))
+  )
+}))
+```
+
+## See Also
+
+- [Productized Services](/service/productized) — Individual service structure
+- [Pricing](/service/pricing) — Pricing strategies

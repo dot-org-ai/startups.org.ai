@@ -1,0 +1,82 @@
+---
+title: Status
+description: Startup concept lifecycle management
+icon: CircleDot
+---
+
+# Status Lifecycle
+
+Every startup concept moves through a defined lifecycle. Status determines what actions are available and what comes next.
+
+```typescript
+import { StartupConceptStatus } from 'startups.org.ai'
+
+type Status =
+  | 'generated'      // Just generated, not reviewed
+  | 'scored'         // Viability scored
+  | 'selected'       // Selected for experimentation
+  | 'experimenting'  // Active experiments running
+  | 'validated'      // Hypothesis validated
+  | 'invalidated'    // Hypothesis invalidated
+  | 'building'       // Building the product
+  | 'launched'       // Product launched
+  | 'paused'         // Paused/on hold
+  | 'killed'         // Killed/abandoned
+```
+
+## Lifecycle Flow
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                                                              │
+│   generated → scored → selected → experimenting             │
+│                                        │                     │
+│                              ┌─────────┴─────────┐          │
+│                              ▼                   ▼          │
+│                         validated           invalidated     │
+│                              │                   │          │
+│                              ▼                   ▼          │
+│                          building              killed       │
+│                              │                              │
+│                              ▼                              │
+│                          launched                           │
+│                              │                              │
+│                              ▼                              │
+│                           paused ←───────────────────────   │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+```
+
+## Status Transitions
+
+| From | To | Trigger |
+|------|----|---------|
+| `generated` | `scored` | AI viability scoring completes |
+| `scored` | `selected` | Manual or automated selection |
+| `selected` | `experimenting` | First experiment starts |
+| `experimenting` | `validated` | Success criteria met |
+| `experimenting` | `invalidated` | Failure criteria met |
+| `validated` | `building` | Decision to build |
+| `building` | `launched` | Product goes live |
+| `any` | `paused` | Temporary hold |
+| `any` | `killed` | Permanent abandonment |
+
+## Status Queries
+
+```typescript
+// Find all concepts ready for experiments
+const ready = concepts.filter(c => c.status === 'selected')
+
+// Find winners
+const winners = concepts.filter(c => c.status === 'validated')
+
+// Find active portfolio
+const active = concepts.filter(c =>
+  ['experimenting', 'building', 'launched'].includes(c.status)
+)
+```
+
+## See Also
+
+- [Viability](/startup/viability) — How concepts get scored
+- [Experiment](/experiment) — Validation process

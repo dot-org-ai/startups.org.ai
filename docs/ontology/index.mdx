@@ -1,0 +1,85 @@
+---
+title: Ontology
+description: The foundational business dimensions for startup generation
+icon: Boxes
+---
+
+# Ontology
+
+The Ontology provides the dimensions that cross-product with hypotheses to generate startup concepts. Built from O*NET, NAICS, NAPCS, and APQC taxonomies.
+
+```typescript
+import { Ontology, Occupation, Industry, Process, Task } from 'startups.org.ai'
+
+const ontology: Ontology = {
+  occupations: Map<string, Occupation>,     // O*NET occupations
+  industries: Map<string, Industry>,        // NAICS industries
+  processes: Map<string, Process>,          // APQC processes
+  tasks: Map<string, Task>,                 // O*NET tasks
+  services: Map<string, Service>,           // NAPCS services
+  technologies: Map<string, Technology>,    // Custom tech taxonomy
+  // ...
+}
+```
+
+<Cards columns={2}>
+  <Card icon={<Briefcase />} title="Occupations" href="/ontology/occupations">
+    Job titles and roles from O*NET
+  </Card>
+  <Card icon={<Building2 />} title="Industries" href="/ontology/industries">
+    Industry classifications from NAICS
+  </Card>
+  <Card icon={<Workflow />} title="Processes" href="/ontology/processes">
+    Business processes from APQC PCF
+  </Card>
+  <Card icon={<ListChecks />} title="Tasks" href="/ontology/tasks">
+    Work tasks from O*NET
+  </Card>
+</Cards>
+
+## Ontology Sources
+
+| Dimension | Source | Entities |
+|-----------|--------|----------|
+| Occupations | O*NET SOC | ~1,000 occupations |
+| Industries | NAICS | ~2,000 industries |
+| Processes | APQC PCF | ~1,500 processes |
+| Tasks | O*NET | ~20,000 tasks |
+| Services | NAPCS | ~2,000 services |
+| Products | UNSPSC | ~100,000 products |
+
+## Cross-Product Generation
+
+```
+Hypothesis × Occupations × Industries × Processes = Startup Concepts
+```
+
+Example:
+
+```
+"Vertical AI CFO" × [CFO, Controller, Accountant] × [Healthcare, Legal, Manufacturing]
+= 9 startup concepts
+```
+
+## Entity Structure
+
+All ontology entities share a common structure:
+
+```typescript
+const entity: OntologyEntity = {
+  ns: 'jobs.org.ai',              // Namespace
+  type: 'Job',                     // Entity type
+  id: 'ChiefFinancialOfficer',    // Unique ID
+  name: 'Chief Financial Officer', // Display name
+  description: '...',              // Full description
+  code: '11-3031.00',             // Source taxonomy code
+  shortName: 'CFO',                // Abbreviation
+  sourceType: 'ONETOccupation'     // Origin taxonomy
+}
+```
+
+## See Also
+
+- [Dimensions](/hypothesis/dimensions) — Configure for hypotheses
+- [Occupations](/ontology/occupations) — Browse occupations
+- [Industries](/ontology/industries) — Browse industries

@@ -1,0 +1,188 @@
+---
+title: AI Overlays
+description: Enhancement capabilities for any task or process
+icon: Layers
+---
+
+# AI Overlays
+
+Even for tasks that can't be fully automated, AI can provide valuable overlay services—coaching, training, analysis, and more.
+
+```typescript
+import { AIOverlayType, AIOverlayTiming, CoachingOverlay } from 'startups.org.ai'
+
+type OverlayType =
+  // Pre-task
+  | 'planning'        // Plan approach
+  | 'preparation'     // Gather inputs
+  | 'training'        // Teach skills
+  | 'simulation'      // Practice first
+
+  // During-task
+  | 'coaching'        // Real-time guidance
+  | 'assistance'      // AI helps with parts
+  | 'co-pilot'        // Work alongside human
+  | 'monitoring'      // Track progress
+
+  // Post-task
+  | 'analysis'        // Analyze outcomes
+  | 'review'          // QA check
+  | 'feedback'        // Improvement feedback
+  | 'documentation'   // Document work
+
+  // Meta
+  | 'consulting'      // Strategic advice
+  | 'optimization'    // Process improvement
+  | 'benchmarking'    // Compare to best practices
+  | 'forecasting'     // Predict outcomes
+```
+
+## Overlay Timing
+
+| Timing | Description | Examples |
+|--------|-------------|----------|
+| `before` | Before the task | Planning, Training |
+| `during` | During execution | Coaching, Co-pilot |
+| `after` | After completion | Review, Analysis |
+| `ongoing` | Continuous | Monitoring, Consulting |
+
+## Overlay Types
+
+### Coaching
+
+Real-time guidance during task execution:
+
+```typescript
+const coaching: CoachingOverlay = {
+  type: 'coaching',
+  timing: 'during',
+  capabilities: {
+    realTimeGuidance: true,
+    contextualTips: true,
+    mistakePrevention: true,
+    bestPractices: true,
+    adaptiveAdvice: true
+  },
+  interaction: {
+    mode: 'hybrid',
+    channels: ['chat', 'overlay'],
+    frequency: 'As needed'
+  },
+  valueProps: {
+    headline: 'AI Coach for Financial Analysis',
+    benefits: ['Reduce errors by 90%', 'Complete tasks 2x faster'],
+    metrics: ['Error rate', 'Completion time', 'Quality score']
+  }
+}
+```
+
+### Training
+
+Teach skills before task execution:
+
+```typescript
+const training: TrainingOverlay = {
+  type: 'training',
+  timing: 'before',
+  curriculum: {
+    modules: [
+      { name: 'Fundamentals', duration: '2 hours', format: 'interactive' },
+      { name: 'Advanced Techniques', duration: '3 hours', format: 'video' },
+      { name: 'Practice Exercises', duration: '2 hours', format: 'simulation' }
+    ],
+    totalDuration: '7 hours',
+    certification: true
+  },
+  personalization: {
+    skillAssessment: true,
+    adaptivePath: true,
+    practiceExercises: true,
+    progressTracking: true
+  }
+}
+```
+
+### Analysis
+
+Analyze outcomes and performance:
+
+```typescript
+const analysis: AnalysisOverlay = {
+  type: 'analysis',
+  timing: 'ongoing',
+  analysisScope: {
+    performance: true,
+    quality: true,
+    efficiency: true,
+    patterns: true,
+    anomalies: true,
+    comparisons: true
+  },
+  deliverables: {
+    dashboards: true,
+    reports: true,
+    alerts: true,
+    recommendations: true,
+    forecasts: true
+  }
+}
+```
+
+### Review
+
+Quality assurance after completion:
+
+```typescript
+const review: ReviewOverlay = {
+  type: 'review',
+  timing: 'after',
+  capabilities: {
+    qualityCheck: true,
+    complianceCheck: true,
+    consistencyCheck: true,
+    completenessCheck: true,
+    errorDetection: true,
+    improvementSuggestions: true
+  },
+  process: {
+    automated: true,
+    escalation: true,
+    scoring: true,
+    feedback: true
+  }
+}
+```
+
+## Overlay Bundles
+
+Package multiple overlays for a task or process:
+
+```typescript
+const bundle: TaskOverlayBundle = {
+  taskId: 'PrepareFinancialReports',
+  taskName: 'Prepare Financial Reports',
+  availableOverlays: ['planning', 'coaching', 'analysis', 'review'],
+  overlays: {
+    planning: planningConfig,
+    coaching: coachingConfig,
+    analysis: analysisConfig,
+    review: reviewConfig
+  },
+  pricing: {
+    individual: { planning: 99, coaching: 199, analysis: 149, review: 79 },
+    bundle: 399,
+    subscription: 299
+  },
+  totalValue: {
+    timesSaved: '20 hours/month',
+    errorReduction: '90%',
+    qualityImprovement: '40%',
+    roiEstimate: '10x'
+  }
+}
+```
+
+## See Also
+
+- [Productized Services](/service/productized) — Full service packaging
+- [Patterns](/service/patterns) — Service delivery patterns

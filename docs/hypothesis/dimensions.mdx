@@ -1,0 +1,91 @@
+---
+title: Dimensions
+description: Configure ontology dimensions for startup generation
+icon: Layers
+---
+
+# Dimensions
+
+Dimensions control which ontology entities are crossed with your hypothesis to generate startup concepts.
+
+```typescript
+import { HypothesisDimensions, OntologyDimensionConfig } from 'startups.org.ai'
+
+const dimensions: HypothesisDimensions = {
+  occupations: {
+    enabled: true,
+    priority: 8,
+    filter: {
+      levels: [1, 2],  // Top-level occupations only
+      limit: 100
+    }
+  },
+  industries: {
+    enabled: true,
+    priority: 6,
+    filter: {
+      ids: ['healthcare', 'finance', 'legal']
+    }
+  },
+  processes: {
+    enabled: true,
+    priority: 9
+  },
+  tasks: {
+    enabled: false,  // Too granular for this hypothesis
+    priority: 3
+  },
+  services: {
+    enabled: true,
+    priority: 5
+  },
+  technologies: {
+    enabled: false,
+    priority: 2
+  }
+}
+```
+
+## Dimension Types
+
+| Dimension | Source | Description |
+|-----------|--------|-------------|
+| `occupations` | O*NET | Job titles and roles |
+| `industries` | NAICS | Industry classifications |
+| `processes` | APQC PCF | Business processes |
+| `tasks` | O*NET | Specific work tasks |
+| `services` | NAPCS | Service types |
+| `technologies` | Custom | Tools and platforms |
+
+## Configuration Options
+
+**enabled** — Whether to include this dimension in cross-product.
+
+**priority** — Weight for viability scoring (1-10). Higher = more important.
+
+**filter** — Narrow down which entities to include:
+
+```typescript
+filter: {
+  ids: ['specific-id-1', 'specific-id-2'],  // Include only these
+  excludeIds: ['skip-this'],                 // Exclude these
+  levels: [1, 2, 3],                         // Hierarchy levels
+  namePattern: 'CFO|Financial',              // Regex matching
+  limit: 50                                   // Max entities
+}
+```
+
+## Dimension Combinations
+
+The number of concepts generated = product of enabled dimension sizes:
+
+```
+100 occupations × 50 industries × 200 processes = 1,000,000 concepts
+```
+
+Use filters and limits to keep generation manageable.
+
+## See Also
+
+- [Ontology](/ontology) — Explore available entities
+- [Startup](/startup) — How concepts are structured

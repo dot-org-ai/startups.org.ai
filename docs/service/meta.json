@@ -1,0 +1,16 @@
+{
+  "title": "Service",
+  "description": "AI-delivered productized services",
+  "root": true,
+  "icon": "Briefcase",
+  "pages": [
+    "index",
+    "---Packaging---",
+    "productized",
+    "patterns",
+    "pricing",
+    "---AI Capabilities---",
+    "overlays",
+    "catalog"
+  ]
+}

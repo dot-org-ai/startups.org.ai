@@ -1,0 +1,134 @@
+---
+title: Analysis
+description: Analyze experiment results and determine next steps
+icon: LineChart
+---
+
+# Analysis Phase
+
+The analysis phase evaluates experiment results, extracts insights, and recommends next actions.
+
+```typescript
+import { analyzeResults } from 'startups.org.ai'
+
+const analysis = await analyzeResults({
+  experiment,
+  metrics: [
+    { type: 'visits', value: 1200 },
+    { type: 'waitlist-signups', value: 36 },
+    { type: 'conversion-rate', value: 3.0 },
+    { type: 'time-on-site', value: 120 }
+  ]
+})
+```
+
+## Analysis Output
+
+```typescript
+const analysis: AnalyzeResultsOutput = {
+  result: 'winner',
+  confidence: 0.95,
+
+  insights: [
+    'Conversion rate exceeds 2% threshold at 3.0%',
+    'Healthcare CFOs show strong intent signals',
+    'Technical messaging outperformed professional tone',
+    'Mobile traffic converting at 2x desktop rate'
+  ],
+
+  recommendations: [
+    {
+      action: 'Proceed to product development',
+      priority: 'high',
+      rationale: 'Strong demand signal with 95% confidence'
+    },
+    {
+      action: 'Double down on mobile optimization',
+      priority: 'medium',
+      rationale: 'Mobile converting 2x higher'
+    },
+    {
+      action: 'Run message testing on LinkedIn Ads',
+      priority: 'medium',
+      rationale: 'Validate technical messaging at scale'
+    }
+  ],
+
+  nextExperiment: 'channel-testing'
+}
+```
+
+## Result Types
+
+| Result | Meaning | Next Step |
+|--------|---------|-----------|
+| `winner` | Success criteria met | Advance concept |
+| `loser` | Failure criteria met | Kill or pivot |
+| `inconclusive` | Not enough data | Extend or rerun |
+| `learning` | Insights but no clear winner | Apply learnings |
+
+## Confidence Levels
+
+| Confidence | Interpretation |
+|------------|----------------|
+| >95% | Very high confidence |
+| 90-95% | High confidence |
+| 80-90% | Moderate confidence |
+| <80% | Low confidence, need more data |
+
+## Recommendation Priorities
+
+```typescript
+recommendations: [
+  {
+    action: 'Start building MVP',
+    priority: 'high',
+    rationale: 'Validated demand, clear path forward'
+  },
+  {
+    action: 'Expand to legal vertical',
+    priority: 'medium',
+    rationale: 'Similar profile to healthcare CFO'
+  },
+  {
+    action: 'Test outcome-based pricing',
+    priority: 'low',
+    rationale: 'Current pricing working, but opportunity'
+  }
+]
+```
+
+## Iteration Loop
+
+```typescript
+const iterate = async (concept: StartupConcept) => {
+  // Run experiment
+  const experiment = await designExperiment({ concept })
+  await runExperiment(experiment)
+
+  // Analyze results
+  const analysis = await analyzeResults({ experiment })
+
+  if (analysis.result === 'winner') {
+    // Advance to next phase
+    concept.status = 'validated'
+    return { action: 'build', concept }
+  } else if (analysis.result === 'loser') {
+    // Kill or pivot
+    concept.status = 'invalidated'
+    return { action: 'pivot', concept, insights: analysis.insights }
+  } else {
+    // Run next experiment
+    const nextExp = await designExperiment({
+      concept,
+      experimentType: analysis.nextExperiment
+    })
+    return { action: 'iterate', experiment: nextExp }
+  }
+}
+```
+
+## See Also
+
+- [Metrics](/experiment/metrics) — Available metrics
+- [Funnel](/experiment/funnel) — Funnel analysis

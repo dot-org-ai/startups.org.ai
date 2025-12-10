@@ -1,0 +1,118 @@
+---
+title: Metrics
+description: Measure experiment performance with the right metrics
+icon: LineChart
+---
+
+# Metrics
+
+Track the right metrics to determine experiment success or failure.
+
+```typescript
+import { Metric, MetricType } from 'startups.org.ai'
+
+const metric: Metric = {
+  type: 'conversion-rate',
+  value: 2.5,
+  unit: '%',
+  period: 'weekly',
+  comparison: {
+    previous: 1.8,
+    change: 38.9,
+    trend: 'up'
+  }
+}
+```
+
+## Traffic Metrics
+
+| Metric | Description |
+|--------|-------------|
+| `impressions` | Times content was shown |
+| `clicks` | Clicks on content/ads |
+| `ctr` | Click-through rate |
+| `visits` | Site visits |
+| `unique-visitors` | Unique visitors |
+| `page-views` | Total page views |
+| `time-on-site` | Average session duration |
+| `bounce-rate` | Single-page sessions |
+
+## Engagement Metrics
+
+| Metric | Description |
+|--------|-------------|
+| `likes` | Likes/reactions |
+| `comments` | Comments |
+| `shares` | Shares/retweets |
+| `saves` | Bookmarks/saves |
+| `follows` | New followers |
+| `engagement-rate` | Engagements / reach |
+
+## Conversion Metrics
+
+| Metric | Description |
+|--------|-------------|
+| `signups` | Account signups |
+| `waitlist-signups` | Waitlist signups |
+| `demo-requests` | Demo requests |
+| `trial-starts` | Free trial starts |
+| `conversions` | Goal completions |
+| `conversion-rate` | Conversions / visitors |
+
+## Revenue Metrics
+
+| Metric | Description |
+|--------|-------------|
+| `revenue` | Total revenue |
+| `mrr` | Monthly recurring revenue |
+| `arr` | Annual recurring revenue |
+| `arpu` | Average revenue per user |
+| `ltv` | Lifetime value |
+| `cac` | Customer acquisition cost |
+| `ltv-cac-ratio` | LTV / CAC |
+
+## Outreach Metrics
+
+| Metric | Description |
+|--------|-------------|
+| `emails-sent` | Emails sent |
+| `email-opens` | Emails opened |
+| `email-open-rate` | Opens / sent |
+| `email-replies` | Replies received |
+| `email-reply-rate` | Replies / sent |
+| `meetings-booked` | Meetings scheduled |
+
+## Paid Metrics
+
+| Metric | Description |
+|--------|-------------|
+| `ad-spend` | Total ad spend |
+| `cpm` | Cost per 1000 impressions |
+| `cpc` | Cost per click |
+| `cpa` | Cost per acquisition |
+| `roas` | Return on ad spend |
+
+## SEO Metrics
+
+| Metric | Description |
+|--------|-------------|
+| `rankings` | Keyword rankings |
+| `keywords-ranked` | Keywords with rankings |
+| `organic-traffic` | Traffic from search |
+| `domain-authority` | Domain authority score |
+| `backlinks` | Number of backlinks |
+
+## Metric Selection by Experiment Type
+
+| Type | Primary Metrics |
+|------|-----------------|
+| `demand-validation` | `waitlist-signups`, `conversion-rate` |
+| `message-testing` | `ctr`, `engagement-rate` |
+| `channel-testing` | `cac`, `conversion-rate` |
+| `price-testing` | `conversion-rate`, `revenue` |
+| `acquisition` | `cac`, `signups` |
+
+## See Also
+
+- [Funnel](/experiment/funnel) — Track full conversion funnel
+- [Types](/experiment/types) — Match metrics to experiment types

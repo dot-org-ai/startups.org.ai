@@ -1,0 +1,94 @@
+---
+title: Branding
+description: Names, domains, and visual identity for startup concepts
+icon: Palette
+---
+
+# Branding
+
+Every startup concept needs a compelling brand identity. The branding system generates names, domains, and visual guidelines.
+
+```typescript
+import { BrandIdentity, StartupName, BrandTone } from 'startups.org.ai'
+
+const brand: BrandIdentity = {
+  name: {
+    name: 'Headless CFO',
+    tagline: 'Financial intelligence for AI agents',
+    domain: 'headlesscfo.com',
+    alternativeDomains: ['headless.cfo', 'hcfo.ai'],
+    naming: {
+      pattern: 'compound',
+      pronunciation: 'HED-les SEE-ef-oh',
+      memorability: 'high',
+      spellability: 'easy'
+    }
+  },
+  tone: 'technical',
+  visual: {
+    primaryColor: '#2563EB',
+    secondaryColor: '#1E40AF',
+    iconStyle: 'geometric',
+    typography: 'mono'
+  },
+  voice: {
+    personality: ['precise', 'reliable', 'efficient'],
+    doSay: ['automate', 'integrate', 'scale'],
+    dontSay: ['easy', 'simple', 'magic']
+  }
+}
+```
+
+## Naming Patterns
+
+| Pattern | Description | Example |
+|---------|-------------|---------|
+| `compound` | Two words combined | Facebook, YouTube |
+| `portmanteau` | Blended words | Pinterest, Instagram |
+| `misspelling` | Intentional misspelling | Lyft, Fiverr |
+| `suffix` | Word + suffix | Shopify, Spotify |
+| `prefix` | Prefix + word | Instagram, Unbounce |
+| `acronym` | Acronym | IBM, AWS |
+| `real-word` | Dictionary word | Apple, Stripe |
+| `abstract` | Made-up word | Kodak, Xerox |
+| `descriptive` | Describes function | Salesforce, Mailchimp |
+| `metaphor` | Metaphorical | Amazon, Uber |
+
+## Brand Tones
+
+| Tone | Description | Best For |
+|------|-------------|----------|
+| `professional` | Corporate, trustworthy | Enterprise, finance |
+| `technical` | Developer-focused | APIs, infrastructure |
+| `friendly` | Approachable, warm | SMB, consumer |
+| `playful` | Fun, creative | Consumer, social |
+| `bold` | Confident, disruptive | Startups, innovation |
+| `minimal` | Clean, simple | Design, tools |
+| `premium` | Luxury, high-end | Enterprise, premium |
+
+## Brand Families
+
+Group related startups under brand families with subdomain strategies:
+
+```typescript
+import { BrandFamily } from 'startups.org.ai'
+
+const family: BrandFamily = {
+  id: 'headless-ly',
+  name: 'Headless.ly',
+  rootDomain: 'headless.ly',
+  positioning: 'API-first SaaS for AI agents',
+  tone: 'technical',
+  subdomainPattern: 'occupation',
+  examples: [
+    { subdomain: 'cfo.headless.ly', concept: 'Headless CFO' },
+    { subdomain: 'coo.headless.ly', concept: 'Headless COO' },
+    { subdomain: 'hr.headless.ly', concept: 'Headless HR' }
+  ]
+}
+```
+
+## See Also
+
+- [Variants](/startup/variants) — Brand variations
+- [Portfolio](/startup/portfolio) — Organize concepts

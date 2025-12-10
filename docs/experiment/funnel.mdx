@@ -1,0 +1,120 @@
+---
+title: Funnel
+description: Track conversion through the customer journey
+icon: Filter
+---
+
+# Funnel Tracking
+
+Funnels track how prospects move through stages toward conversion.
+
+```typescript
+import { Funnel, FunnelStage } from 'startups.org.ai'
+
+const funnel: Funnel = {
+  id: 'healthcare-cfo-funnel',
+  name: 'Healthcare CFO Acquisition Funnel',
+  stages: [
+    {
+      id: 'awareness',
+      name: 'Awareness',
+      order: 1,
+      description: 'Prospect sees content or ad',
+      entryMetric: 'impressions',
+      exitMetric: 'clicks'
+    },
+    {
+      id: 'interest',
+      name: 'Interest',
+      order: 2,
+      description: 'Prospect visits landing page',
+      entryMetric: 'visits',
+      exitMetric: 'time-on-site'
+    },
+    {
+      id: 'consideration',
+      name: 'Consideration',
+      order: 3,
+      description: 'Prospect joins waitlist',
+      entryMetric: 'waitlist-signups',
+      exitMetric: 'email-opens'
+    },
+    {
+      id: 'intent',
+      name: 'Intent',
+      order: 4,
+      description: 'Prospect requests demo',
+      entryMetric: 'demo-requests',
+      exitMetric: 'meetings-booked'
+    },
+    {
+      id: 'conversion',
+      name: 'Conversion',
+      order: 5,
+      description: 'Prospect becomes customer',
+      entryMetric: 'trial-starts',
+      exitMetric: 'conversions'
+    }
+  ],
+  metrics: {
+    topOfFunnel: 10000,
+    bottomOfFunnel: 50,
+    overallConversion: 0.5,
+    stageConversions: {
+      'awareness-to-interest': 5.0,
+      'interest-to-consideration': 20.0,
+      'consideration-to-intent': 10.0,
+      'intent-to-conversion': 50.0
+    }
+  }
+}
+```
+
+## Standard Funnel Stages
+
+| Stage | Description | Key Metric |
+|-------|-------------|------------|
+| Awareness | First exposure | Impressions |
+| Interest | Active engagement | Visits |
+| Consideration | Evaluating | Signups |
+| Intent | Ready to buy | Demo requests |
+| Conversion | Became customer | Customers |
+
+## Funnel Metrics
+
+**Top of Funnel (TOFU)** — Entries at first stage
+
+**Bottom of Funnel (BOFU)** — Conversions at final stage
+
+**Overall Conversion** — BOFU / TOFU
+
+**Stage Conversion** — Exits / Entries for each stage
+
+## Identifying Bottlenecks
+
+```typescript
+const findBottleneck = (funnel: Funnel) => {
+  const conversions = Object.entries(funnel.metrics.stageConversions)
+  return conversions.reduce((min, [stage, rate]) =>
+    rate < min.rate ? { stage, rate } : min,
+    { stage: '', rate: 100 }
+  )
+}
+
+// Find where you're losing the most people
+const bottleneck = findBottleneck(funnel)
+// → { stage: 'interest-to-consideration', rate: 20.0 }
+```
+
+## Funnel Optimization
+
+1. **Identify bottleneck** — Which stage has lowest conversion?
+2. **Diagnose cause** — Why are people dropping off?
+3. **Hypothesis** — What change might improve it?
+4. **Experiment** — Run funnel-optimization experiment
+5. **Measure** — Did stage conversion improve?
+
+## See Also
+
+- [Metrics](/experiment/metrics) — Available metrics
+- [Types](/experiment/types) — Funnel optimization experiments

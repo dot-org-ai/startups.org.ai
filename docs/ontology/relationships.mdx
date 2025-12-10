@@ -1,0 +1,95 @@
+---
+title: Relationships
+description: Connections between ontology entities
+icon: Network
+---
+
+# Relationships
+
+Relationships connect ontology entities, enabling richer startup concept generation.
+
+```typescript
+import { OntologyRelationship, RelationshipType } from 'startups.org.ai'
+
+const relationship: OntologyRelationship = {
+  fromType: 'Occupation',
+  fromId: 'ChiefFinancialOfficer',
+  toType: 'Task',
+  toId: 'PrepareFinancialReports',
+  relationshipType: 'has-task',
+  weight: 0.95  // How central this task is to the occupation
+}
+```
+
+## Relationship Types
+
+| Type | Description | Example |
+|------|-------------|---------|
+| `has-task` | Occupation performs task | CFO → Prepare Reports |
+| `uses-tool` | Occupation uses technology | Accountant → Excel |
+| `in-industry` | Occupation common in industry | CFO → Healthcare |
+| `requires-skill` | Task requires skill | Financial Analysis → Excel |
+| `part-of` | Hierarchy relationship | Hospitals → Healthcare |
+| `related-to` | General association | CFO → Controller |
+| `alternative-to` | Similar/competing | QuickBooks → Xero |
+| `depends-on` | Prerequisite | Reporting → Data Entry |
+
+## Relationship Weights
+
+Weights (0-1) indicate relationship strength:
+
+| Weight | Meaning |
+|--------|---------|
+| 0.9-1.0 | Core/essential relationship |
+| 0.7-0.9 | Strong relationship |
+| 0.5-0.7 | Moderate relationship |
+| 0.3-0.5 | Weak relationship |
+| 0.0-0.3 | Peripheral relationship |
+
+## Querying Relationships
+
+```typescript
+// Find all tasks for an occupation
+const cfoTasks = relationships
+  .filter(r =>
+    r.fromType === 'Occupation' &&
+    r.fromId === 'ChiefFinancialOfficer' &&
+    r.relationshipType === 'has-task'
+  )
+  .sort((a, b) => b.weight - a.weight)
+
+// Find occupations that use a technology
+const excelUsers = relationships
+  .filter(r =>
+    r.toType === 'Technology' &&
+    r.toId === 'MicrosoftExcel' &&
+    r.relationshipType === 'uses-tool'
+  )
+```
+
+## Relationship-Based Generation
+
+Use relationships to generate more targeted concepts:
+
+```typescript
+const generateFromRelationships = (occupationId: string) => {
+  // Find high-weight tasks
+  const coreTasks = getTasksForOccupation(occupationId)
+    .filter(r => r.weight > 0.8)
+
+  // Find tools they use
+  const tools = getToolsForOccupation(occupationId)
+
+  // Find industries they work in
+  const industries = getIndustriesForOccupation(occupationId)
+
+  // Generate concepts that automate core tasks
+  // in target industries, integrating with existing tools
+}
+```
+
+## See Also
+
+- [Occupations](/ontology/occupations) — Job roles
+- [Tasks](/ontology/tasks) — Work tasks
+- [Dimensions](/hypothesis/dimensions) — Use relationships in filtering

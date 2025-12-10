@@ -1,0 +1,124 @@
+---
+title: Generation
+description: Cross-product hypotheses with ontology to create concepts
+icon: Factory
+---
+
+# Generation Phase
+
+The generation phase crosses hypotheses with ontology dimensions to produce startup concepts at scale.
+
+```typescript
+import { generateConcepts, GenerationConfig } from 'startups.org.ai'
+
+const config: GenerationConfig = {
+  hypothesisId: 'vertical-ai-cfos',
+  ontologyFilters: {
+    occupationIds: ['ChiefFinancialOfficer', 'Controller', 'Accountant'],
+    industryIds: ['healthcare', 'legal', 'manufacturing'],
+    processIds: ['financial-reporting', 'budgeting', 'forecasting']
+  },
+  controls: {
+    maxConcepts: 100,
+    minViabilityScore: 60,
+    includeVariants: true,
+    variantsPerConcept: 3,
+    variantTypes: ['pricing', 'positioning', 'segment']
+  },
+  brandFamilies: ['headless-ly', 'agentic-services'],
+  aiOverlayConfig: {
+    includeOverlays: true,
+    overlayTypes: ['coaching', 'analysis', 'review']
+  }
+}
+
+const { concepts, totalGenerated, filteredOut } = await generateConcepts({
+  hypothesis,
+  config,
+  batchSize: 20
+})
+```
+
+## Cross-Product Logic
+
+```
+Hypothesis × Occupations × Industries × Processes = Concepts
+
+Example:
+"Vertical AI CFO" × [CFO, Controller] × [Healthcare, Legal] × [Reporting, Budgeting]
+= 2 × 2 × 2 = 8 base concepts
+× 3 variants each = 24 total concepts
+```
+
+## Generation Config
+
+### Ontology Filters
+
+Narrow down which entities to cross:
+
+```typescript
+ontologyFilters: {
+  occupationIds: ['specific-occupation'],      // Include specific
+  industryIds: ['healthcare', 'finance'],      // Multiple industries
+  processIds: ['invoicing'],                   // Specific processes
+  excludeIds: ['low-value-task'],              // Exclude specific
+  occupationSegments: ['c-suite', 'director'], // By segment
+  industryVerticals: ['technology']            // By vertical
+}
+```
+
+### Generation Controls
+
+```typescript
+controls: {
+  maxConcepts: 100,           // Cap total concepts
+  minViabilityScore: 60,      // Filter by minimum score
+  includeVariants: true,      // Generate variants
+  variantsPerConcept: 3,      // Variants per base concept
+  variantTypes: ['pricing']   // Which variant types
+}
+```
+
+## AI Overlay Generation
+
+Generate overlay services alongside concepts:
+
+```typescript
+import { generateOverlays } from 'startups.org.ai'
+
+const { bundle, opportunities } = await generateOverlays({
+  entityType: 'task',
+  entityId: 'PrepareFinancialReports',
+  overlayTypes: ['coaching', 'training', 'analysis', 'review']
+})
+
+// bundle contains configured overlays for this task
+// opportunities shows best overlay opportunities
+```
+
+## Batch Processing
+
+For large generations, use batching:
+
+```typescript
+let allConcepts = []
+let hasMore = true
+let batch = 0
+
+while (hasMore) {
+  const result = await generateConcepts({
+    hypothesis,
+    config: { ...config, batchOffset: batch * 20 },
+    batchSize: 20
+  })
+
+  allConcepts.push(...result.concepts)
+  hasMore = result.nextBatch
+  batch++
+}
+```
+
+## See Also
+
+- [Scoring](/workflow/scoring) — Score generated concepts
+- [Enrichment](/workflow/enrichment) — Prepare data for generation
