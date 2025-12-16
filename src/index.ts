@@ -294,6 +294,169 @@ export {
 } from './experiment'
 
 // =============================================================================
+// SITE - Site configuration and structure
+// =============================================================================
+export {
+  // Site types
+  SiteType,
+  SitePurpose,
+
+  // Pages
+  PageTemplate,
+  PageMeta,
+  PageSection,
+  Page,
+
+  // Navigation
+  NavItemType,
+  NavItem,
+  NavigationMenu,
+  Breadcrumb,
+  Navigation,
+
+  // SEO
+  OpenGraphConfig,
+  StructuredDataType,
+  StructuredData,
+  SitemapConfig,
+  RobotsConfig,
+  SEOConfig,
+
+  // Analytics
+  TrackingPixel,
+  AnalyticsEvent,
+  ConversionGoal,
+  AnalyticsConfig,
+
+  // CMS
+  CMSProvider,
+  ContentModel,
+  CMSWebhook,
+  CMSConfig,
+
+  // Site configuration
+  SiteTheme,
+  SiteConfig,
+
+  // Templates
+  SiteTemplate,
+} from './site'
+
+// =============================================================================
+// APP - Application abstraction
+// =============================================================================
+export {
+  // App type & framework
+  AppType,
+  AppFramework,
+
+  // Configuration
+  EnvironmentVariable,
+  FeatureFlag,
+  AppConfig,
+
+  // Deployment
+  DeploymentTarget,
+  CDNConfig,
+  AppDeployment,
+
+  // Analytics
+  AnalyticsProvider,
+  EventTracking,
+  AppAnalytics,
+
+  // App entity
+  App,
+
+  // Templates & registry
+  AppTemplate,
+  AppRegistry,
+} from './app'
+
+// =============================================================================
+// API - API specification and abstraction
+// =============================================================================
+export {
+  // Specification types
+  APISpecType,
+  OpenAPIVersion,
+
+  // HTTP
+  HTTPMethod,
+  HTTPStatusCode,
+  HTTPStatusCategory,
+
+  // Authentication
+  AuthMethod,
+  AuthLocation,
+  OAuthFlow,
+  OAuth2Config,
+  JWTConfig,
+  AuthenticationScheme,
+  Authorization,
+
+  // Rate limiting
+  RateLimitWindow,
+  RateLimitStrategy,
+  RateLimitScope,
+  RateLimit,
+  RateLimitTier,
+  RateLimiting,
+
+  // Versioning
+  VersioningStrategy,
+  VersionFormat,
+  APIVersion,
+  APIVersioning,
+
+  // Data schemas
+  DataType,
+  SchemaProperty,
+  DataSchema,
+
+  // Request/Response
+  ParameterLocation,
+  Parameter,
+  RequestBody,
+  ResponseBody,
+
+  // Endpoints
+  EndpointTag,
+  Endpoint,
+
+  // Routes & Middleware
+  MiddlewareType,
+  Middleware,
+  CORSConfig,
+  Route,
+
+  // Documentation
+  DocFormat,
+  CodeSample,
+  APIDocumentation,
+
+  // Servers
+  ServerEnvironment,
+  Server,
+
+  // Error handling
+  ErrorFormat,
+  ErrorResponse,
+  ErrorHandling,
+
+  // Complete spec
+  APISpec,
+
+  // Code generation
+  CodeGenerationTarget,
+  APIGenerationConfig,
+
+  // Comparison & migration
+  APIChange,
+  APIComparison,
+} from './api'
+
+// =============================================================================
 // WORKFLOW - Orchestration functions
 // =============================================================================
 export {
